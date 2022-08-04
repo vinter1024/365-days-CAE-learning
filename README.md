@@ -13,6 +13,7 @@ To learn CAE product in 365 days
 > 
 > ——tombkeeper
 
+
 ## 写在开始
 
 这是一份给我自己学习CAE产品的记录清单，原型来源于Vancir大佬的365-days-get-xuanwulab-job
@@ -21,7 +22,6 @@ To learn CAE product in 365 days
 
 由于专业背景的缘故，学习和路线也不会局限于软件使用本身，会在学习进程中随时补充对应的物理，数学计算，乃至图形学相关基础知识，方便理解操作意图
 
-> 
 
 ## 学习进度
 
