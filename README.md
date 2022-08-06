@@ -30,3 +30,4 @@ To learn CAE product in 365 days
 | ---------- | ------------------------------------------------------------------------------- |
 | Day1       | [CFD入门](./weeks/week1.md)                                                     |
 | Day2       | [ICEM介绍与实操](./weeks/week1.md)                                               |
+| Day2       | [ICEM实操](./weeks/week1.md)                                                     |
