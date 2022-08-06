@@ -179,6 +179,17 @@ Create Mesh Density
 8. 高级网格技术：网格雕塑技术
 独特的网格雕塑技术高质量处理复杂外形，特别适合复杂流场精确分析
 
+## Day 4 CFD 后处理
+
+|  后处理软件名称      |                详情   |
+| --------------------| ---------------------|
+|Fieldview|   |
+|fluent|   |
+|paraview|
+|CFX CFD_post|
+|Simscale|
+|tecplot||
+|EnSight||
 
 
 
