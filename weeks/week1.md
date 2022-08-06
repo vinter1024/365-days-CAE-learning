@@ -118,7 +118,7 @@
 
 
 ## Day 3 ICEM网格实操
-> 传送门 [ICEM CFD简明教程](资料/ICEM CFD简明教程.pdf)
+> 传送门 [ICEM CFD简明教程](.资料/ICEM CFD简明教程.pdf)
 
 1. 自动体网格工具：自适应加密
 
