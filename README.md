@@ -32,4 +32,8 @@ To learn CAE product in 365 days
 | Day2       | [ICEM介绍与实操](./weeks/week1.md)                                               |
 | Day3       | [ICEM实操](./weeks/week1.md)                                                     |
 | Day4       | [涡量](./weeks/week2.md)                                                         |
-| Day 5      | [结构分析后处理](./weeks/week2.md)                                                   |
+| Day 5      | [结构分析后处理](./weeks/week2.md)                                                 |
+| Day 6      | [CFD中的NS方程](./weeks/week2.md)                                                 |
+| Day 7      | [CFD求解器](./weeks/week2.md)                                                     |
+| Day 8      | [边界条件-远端位移和给定位移和固定约束](./weeks/week2.md)                              |
+| Day 9      | [边界条件-无摩擦约束/圆柱面约束/仅有压缩的约束](./weeks/week2.md)                       |   
