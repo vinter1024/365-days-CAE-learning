@@ -63,6 +63,11 @@
 - [ ] 
 
 ## Day 8
+- [ ] 边界条件-远端位移和给定位移
+1. remote displacement
+2. displacement
+3. 
+- [ ] 
 
 
 ## Day 9
