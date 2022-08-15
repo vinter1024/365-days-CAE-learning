@@ -106,7 +106,8 @@
 
 – 这个需要一个迭代（非线性）求解器来求解。
 
-? 由于事先不知道压缩面的行为，所以需要利用迭代求解器来判断哪个表面显示的是压缩行为
-![image](https://user-images.githubusercontent.com/43568675/184502177-3f8e6597-3f82-4bd5-a0b1-35bbd643efb7.png)
 
-## Day 10
+
+## Day 10 边界条件-汇总
+
+> [Ansys Workbench边界条件——载荷与约束实例详解](https://zhuanlan.zhihu.com/p/392980475)
