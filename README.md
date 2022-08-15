@@ -37,3 +37,6 @@ To learn CAE product in 365 days
 | Day 7      | [CFD求解器](./weeks/week2.md)                                                     |
 | Day 8      | [边界条件-远端位移和给定位移和固定约束](./weeks/week2.md)                              |
 | Day 9      | [边界条件-无摩擦约束/圆柱面约束/仅有压缩的约束](./weeks/week2.md)                       |   
+| Day 10      | [边界条件-汇总](./weeks/week2.md)                                                 | 
+| Day 11     | [ICEM CFD 网格划分技术](./weeks/week3.md)                                          | 
+ 
