@@ -7,7 +7,7 @@
 1. 内流道抽取，Tools-> fill-> by cavity(or by caps)选择内流道所有相关面，新建几何体，获取内流道几何
 2. 外流场区域划分，Tools-> Enclosure -> shape-box 输入六个方向的尺寸
 
-## Day 11 ANSYS CFD的仿真分析步骤
+## Day 12 ANSYS CFD的仿真分析步骤
 
 > [“工作流程很重要”——说说ANSYS CFD的仿真分析步骤](https://zhuanlan.zhihu.com/p/78722352)
 
