@@ -40,3 +40,5 @@ To learn CAE product in 365 days
 | Day 10     | [边界条件-汇总](./weeks/week2.md)                                                  | 
 | Day 11     | [ICEM CFD 网格划分技术](./weeks/week3.md)                                          | 
 | Day 12     | [ANSYS CFD的仿真分析步骤](./weeks/week3.md)                                        | 
+| Day 13     | [流体基础综合1](./weeks/week3.md)                                                  | 
+| Day 14     | [流体基础综合2](./weeks/week3.md)                                                  | 
