@@ -223,3 +223,31 @@
 <img width="729" alt="image" src="https://user-images.githubusercontent.com/43568675/185340697-4f7f48f1-3177-4b70-befc-7690bd5539c3.png">
 
 <img width="732" alt="image" src="https://user-images.githubusercontent.com/43568675/185340836-8b50d184-75c7-4a84-bc89-455081f1bc76.png">
+
+## Day 15 流体分析平台
+- [x] workbench 19.0 平台
+
+1. CFD网格划分平台
+80%时间网格划分，网格质量直接决定CFD计算精度和速度
+
+* ICEM 高阶 六面体网格划分
+* Turbogrid 专业涡轮叶栅通道网格划分软件  
+* GAMBIT  简单直接 模型建立 网格化 指定模型区域大小（对一般工程已经足够）已从ansys自带中移除
+
+2. 流体分析平台
+
+* CFX  国际通行商用 流体，热传递，化学反应
+<img width="819" alt="image" src="https://user-images.githubusercontent.com/43568675/185556769-eda38a03-5d30-4d2e-b8ac-42d0fab827cf.png">
+
+* FLUENT 国际通行CFD软件包 不可压缩到高度可压缩范围内的复杂流动/多种求解方法和多重网格加速收敛技术 ICEM与之配合最好
+<img width="810" alt="image" src="https://user-images.githubusercontent.com/43568675/185556835-9f6fcba7-e7f0-47ec-b430-f288c8af9e0a.png">
+
+* POLYFLOW 有限元法 粘弹性材料流动模拟
+<img width="801" alt="image" src="https://user-images.githubusercontent.com/43568675/185557615-2ca49210-8791-4188-84f7-24ea5a0abc1c.png">
+
+3. 流体分析分析后处理平台
+* CFD- POST
+
+4. workbench中串联流程
+
+- [x] workbench 平台工作节目
