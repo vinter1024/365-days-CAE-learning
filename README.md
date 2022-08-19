@@ -42,3 +42,4 @@ To learn CAE product in 365 days
 | Day 12     | [ANSYS CFD的仿真分析步骤](./weeks/week3.md)                                        | 
 | Day 13     | [流体基础综合1](./weeks/week3.md)                                                  | 
 | Day 14     | [流体基础综合2](./weeks/week3.md)                                                  | 
+| Day 15     | [流体分析平台](./weeks/week3.md)                                                   | 
