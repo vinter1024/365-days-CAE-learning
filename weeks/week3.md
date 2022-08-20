@@ -257,7 +257,7 @@
 ![image](https://user-images.githubusercontent.com/43568675/185752707-3f995c3a-ea43-42df-95ec-1f8ca98693c8.png)
 
 - [x] 主菜单区
-![Uploading image.png…]()
+
 1. 文件 File
 2. 视图 View
 3. 工具 Tools
