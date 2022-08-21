@@ -43,4 +43,5 @@ To learn CAE product in 365 days
 | Day 13     | [流体基础综合1](./weeks/week3.md)                                                  | 
 | Day 14     | [流体基础综合2](./weeks/week3.md)                                                  | 
 | Day 15     | [流体分析平台](./weeks/week3.md)                                                   | 
-| Day 16     | [workbench 工作界面](./weeks/week3.md)                                                   | 
+| Day 16     | [workbench 工作界面](./weeks/week3.md)                                            | 
+| Day 17     | [流体有限元分析前处理知识1](./weeks/week3.md)                                       | 
