@@ -52,6 +52,6 @@
 4. 文件类型
 * mesh文件（*. msh） fluent可识别的网格文件
 * case文件（*. cas）包含网格 边界条件和解的控制参数
-* data
-* journal 文件
+* data文件（*.dat）包含计算的结果数据
+* journal 文件（*.jou）包含所有的操作命令
 
