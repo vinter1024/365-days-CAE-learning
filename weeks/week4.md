@@ -25,4 +25,33 @@
 * parallel 为并行计算设置，可以选择多核双核
 
 5. 版本选择：多个fluent版本可以选择使用哪个版本
-6. pre/post only 激活此项
+
+6. pre/post only 激活此项只利用fluent进行前后处理
+
+7. 设置工作路径
+
+8. 设置fluent应用程序路径
+
+9. use journal file 激活此项记录journal脚本文件，否则不记录
+
+- [x] Fluent19.0 工作界面
+1. 软件图形用户界面
+<img width="723" alt="image" src="https://user-images.githubusercontent.com/43568675/185835629-d3eab239-7300-4678-809b-1f130ab12ec9.png">
+
+2. 软件文字用户界面
+
+图形用户界面（GUI）文本用户界面（TUI）
+* 高级命令只在TUI中可用
+* 回车键展示当前级别的命令
+* “q” 返回上一级命令
+<img width="629" alt="image" src="https://user-images.githubusercontent.com/43568675/185837742-d827d0ca-a9bf-4bb2-aca7-3227c59ee3db.png">
+
+3. 菜单栏
+<img width="544" alt="image" src="https://user-images.githubusercontent.com/43568675/185838476-8a3014a9-ca4d-43fa-8f9e-d87307dab530.png">
+
+4. 文件类型
+* mesh文件（*. msh） fluent可识别的网格文件
+* case文件（*. cas）包含网格 边界条件和解的控制参数
+* data
+* journal 文件
+
