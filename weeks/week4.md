@@ -57,3 +57,62 @@
 * data文件（*.dat）包含计算的结果数据
 * journal 文件（*.jou）包含所有的操作命令
 
+## Day 19 Fluent软件求解流程
+- [x] 输入网格文件
+1. file->read ->mesh
+<img width="1031" alt="image" src="https://user-images.githubusercontent.com/43568675/186067691-0b1e26ed-cab9-46e7-a020-3914ed2e2f1d.png">
+
+- [x]  网格操作
+
+ 1. 网格质量检测
+<img width="616" alt="image" src="https://user-images.githubusercontent.com/43568675/186070492-b9bfda24-9d3b-45b4-9da5-e647736d6609.png">
+
+2. 网格缩放
+3. 网格平移
+4. 网格旋转
+<img width="554" alt="image" src="https://user-images.githubusercontent.com/43568675/186071289-589f82e4-b9a7-4194-bd74-07f7e6b6e011.png">
+
+- [x]  选择求解器**
+<img width="1021" alt="image" src="https://user-images.githubusercontent.com/43568675/186071569-ed9f669e-4f2f-4e07-b6ec-d1b0367b316c.png">
+
+- [x]  选择物理模型**
+<img width="880" alt="image" src="https://user-images.githubusercontent.com/43568675/186072082-1afd07f9-c527-45fc-8d13-f2ae9124609d.png">
+
+<img width="951" alt="image" src="https://user-images.githubusercontent.com/43568675/186075852-432c2b6a-fa6c-461a-960f-6fb87f1e9545.png">
+
+<img width="998" alt="image" src="https://user-images.githubusercontent.com/43568675/186078723-8df5838c-3c45-4767-a347-b687173bda8f.png">
+
+
+- [x]  定义流体属性
+<img width="1014" alt="image" src="https://user-images.githubusercontent.com/43568675/186078855-3258dc79-8cac-4f63-8340-649c64447ed7.png">
+
+- [x]   定义操作条件
+<img width="987" alt="image" src="https://user-images.githubusercontent.com/43568675/186078990-b2ee3dfd-c9ca-4db5-9e94-79eb69007e53.png">
+
+- [x]  定义边界条件**
+<img width="942" alt="image" src="https://user-images.githubusercontent.com/43568675/186079087-25810087-ade2-42e1-860a-148fc107fd2a.png">
+<img width="802" alt="image" src="https://user-images.githubusercontent.com/43568675/186079267-96ad7cec-e234-43ee-a995-685fc37c22d2.png">
+
+- [x]  设置参考值
+<img width="854" alt="image" src="https://user-images.githubusercontent.com/43568675/186079494-0de53faa-6cb1-40ec-a3e7-04610daf7e70.png">
+
+- [x]  求解方法以及参数**
+<img width="998" alt="image" src="https://user-images.githubusercontent.com/43568675/186079606-db12c685-0814-493d-8c51-a02d4747ed81.png">
+
+
+- [x]  设置收敛监视
+<img width="716" alt="image" src="https://user-images.githubusercontent.com/43568675/186084478-64c8685e-b3dd-4e37-868a-1a064cbce669.png">
+
+- [x]   定义初始条件
+<img width="315" alt="image" src="https://user-images.githubusercontent.com/43568675/186087042-b73b2c8f-952f-40e8-ae51-3d4cf5cf9cb9.png">
+
+- [x]   设置自动存储
+<img width="900" alt="image" src="https://user-images.githubusercontent.com/43568675/186087154-71ca9ccb-639f-473b-b67e-3ad9c13d572f.png">
+
+文件的压缩格式 *.gz
+
+- [x]   迭代计算
+<img width="453" alt="image" src="https://user-images.githubusercontent.com/43568675/186089113-e547464a-f642-4538-9c50-33ad47819c34.png">
+
+- [x]   保存结果
+<img width="292" alt="image" src="https://user-images.githubusercontent.com/43568675/186089578-2eab4740-cd54-4d73-bebc-6887ff823ae3.png">
