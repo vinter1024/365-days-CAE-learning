@@ -1,5 +1,7 @@
 ## Day 18 流体有限元分析前处理知识2
 
+> [ANSYS Fluent19.0流体有限元分析视频教程]( https://www.bilibili.com/video/BV1Dt4y1x7Ms)
+
 - [x] Fluent19.0 启动界面
 
 1. 选择模型纬度：2维/3维
