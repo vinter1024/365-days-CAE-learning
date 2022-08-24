@@ -116,3 +116,75 @@
 
 - [x]   保存结果
 <img width="292" alt="image" src="https://user-images.githubusercontent.com/43568675/186089578-2eab4740-cd54-4d73-bebc-6887ff823ae3.png">
+
+
+## Day 20 fluent 后处理
+- [x]  后处理工具
+<img width="701" alt="image" src="https://user-images.githubusercontent.com/43568675/186326062-eef648cb-b054-4748-9e59-0c3e95e7c321.png">
+
+1. 流场截面生成
+<img width="77" alt="image" src="https://user-images.githubusercontent.com/43568675/186332624-9d208ef6-10d3-4de6-bd23-36344a8f8078.png">
+
+2. 可视化后处理
+
+【Graphic】
+* mesh 网格
+* contours 热力图
+* vectors 矢量
+* pathlines 流线
+* particle tracks 粒子示踪
+* hsf file
+
+【plots】
+* XY plot 曲线图
+* histogram 柱状图
+* residuals 残差图
+
+
+3. 数据报告
+把某个计算域参数
+
+4. 动画
+瞬态流场进行录制播放
+
+5. 其他参数
+具有离散项的流场，具有辐射的一些参数
+
+
+- [x]  生成面
+将计算域中的一部分作为surface 用于可视化和定量曲线等后处理
+
+产生面的方式：
+* zone surfaces （自动生成）
+* partition surfaces
+* point surfaces
+* line and rake surfaces
+* plane surfaces
+* ISO-surfaces
+* clipping surfaces
+
+面可以重命名 删除
+
+- [x]  可视化展示
+参考 2
+<img width="762" alt="image" src="https://user-images.githubusercontent.com/43568675/186334817-0437e011-9cc0-494c-b011-1272b40c6ec3.png">
+
+<img width="765" alt="image" src="https://user-images.githubusercontent.com/43568675/186334899-c7dc0884-9e9e-4fb9-bef2-7953f14c51a3.png">
+
+调整鼠标操作
+
+- [x]  数据报告
+1. 通量报告
+* 净通量的计算
+* 总的热传输率
+
+2. 受力
+3. 面积分
+求解某个面平均压力
+4. 体积分
+
+<img width="760" alt="image" src="https://user-images.githubusercontent.com/43568675/186335074-6d700cc8-0e2f-4c36-8f89-f7c1e460b12f.png">
+
+- [x]  其他后处理形式
+<img width="784" alt="image" src="https://user-images.githubusercontent.com/43568675/186335435-381a5ba1-caaf-4d6f-a49d-e567eff492d1.png">
+
