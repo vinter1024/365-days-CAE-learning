@@ -48,3 +48,4 @@ To learn CAE product in 365 days
 | Day 18     | [流体有限元分析前处理知识2](./weeks/week4.md)                                       | 
 | Day 19     | [Fluent软件求解流程](./weeks/week4.md)                                            | 
 | Day 20     | [Fluent后处理](./weeks/week4.md)                                                 | 
+| Day 21     | [混合弯管二维流动和传热问题1](./weeks/week4.md)                                     |  
