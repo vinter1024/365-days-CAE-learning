@@ -188,5 +188,14 @@
 - [x]  其他后处理形式
 <img width="784" alt="image" src="https://user-images.githubusercontent.com/43568675/186335435-381a5ba1-caaf-4d6f-a49d-e567eff492d1.png">
 
-## Day 21 混合弯管二维流动和传热问题
-- [x]  
+## Day 21 混合弯管二维流动和传热问题1 
+<img width="882" alt="image" src="https://user-images.githubusercontent.com/43568675/186592223-df6adab2-8aca-4cda-9fd4-b1676ee73afb.png">
+<img width="390" alt="image" src="https://user-images.githubusercontent.com/43568675/186592280-02679736-3b79-43e8-bd93-324a642d2bb4.png">
+
+
+- [x]  模型导入
+
+- [x]  网格划分 ICEM CFD
+默认几何单位记得需要调整 
+
+
