@@ -189,3 +189,4 @@
 <img width="784" alt="image" src="https://user-images.githubusercontent.com/43568675/186335435-381a5ba1-caaf-4d6f-a49d-e567eff492d1.png">
 
 ## Day 21 混合弯管二维流动和传热问题
+- [x]  
