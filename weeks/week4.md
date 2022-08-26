@@ -202,8 +202,12 @@
 <img width="1055" alt="image" src="https://user-images.githubusercontent.com/43568675/186846768-23ac5764-8b48-46c3-90da-6ce308497617.png">
 
 - [x] 网格预划分
-- [x] 网格预划分
+
 1. 结构化/非结构化网格划分 
 规则流体域，进行结构化网格
-2. 网格参数设置好后，提前预览，达到要求账户
-4. great
+2. 网格参数设置好后，提前预览，达到要求再生成
+
+- [x] 网格划分步骤
+1. blocking
+* create block-命名 生成块
+* split block
