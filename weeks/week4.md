@@ -208,6 +208,11 @@
 2. 网格参数设置好后，提前预览，达到要求再生成
 
 - [x] 网格划分步骤
-1. blocking
+ blocking
 * create block-命名 生成块
-* split block
+* split block 划分块 通过线 点 等进行划分
+* associate 关联 将几何和块上的点 关联到一起
+<img width="1002" alt="image" src="https://user-images.githubusercontent.com/43568675/186850483-2be2ce6d-e126-479e-a795-3f712c0742ad.png">
+
+这段视频做得太烂了，实在是总结不下去
+总结一下感受 操作繁琐，流程不明晰，暂时没搞懂为什么CFD用ICEM作为主流网格划分工具，明天换个教程看ICEM网格划分
