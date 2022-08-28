@@ -365,12 +365,15 @@ CFD 领域研究较多的圆柱绕流计算流体域，这是典型的外流计�
 <img width="494" alt="image" src="https://user-images.githubusercontent.com/43568675/187058916-219f026b-698f-47c0-92d5-3114ae607795.png">
 
 对于图 3-5 所示的喷嘴模型，若计算其内部流场，根据问题简化程度，可以建立如图 3-6、图 3-7、图 3-8、图 3-9 所示的计算域模型。
+
 <img width="510" alt="image" src="https://user-images.githubusercontent.com/43568675/187058925-571333b0-8cbf-4dbd-9fdb-ed8af08755bc.png">
+
 <img width="624" alt="image" src="https://user-images.githubusercontent.com/43568675/187058949-2822ddbd-0ff3-488b-85d8-d9ee88cd0c5f.png">
 
 <img width="644" alt="image" src="https://user-images.githubusercontent.com/43568675/187058961-6b8c830b-48fc-4d3d-ad6a-76604853f1d5.png">
 
-![Uploading image.png…]()
+<img width="625" alt="image" src="https://user-images.githubusercontent.com/43568675/187059009-bc06b550-989b-4cd9-950c-15e027651bec.png">
+
 
 - [x]  多区域计算模型
 
