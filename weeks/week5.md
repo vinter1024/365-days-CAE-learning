@@ -1,4 +1,4 @@
-## Day 25  CFD结构化网格和非结构化网格
+## Day 25  结构化网格和非结构化网格
 
 > [CEM_CFD划分六面体结构网格](https://zhuanlan.zhihu.com/p/158111591))
 >
