@@ -52,4 +52,5 @@ To learn CAE product in 365 days
 | Day 22     | [混合弯管二维流动和传热问题2](./weeks/week4.md)                                     | 
 | Day 23     | [ICEM软件分析](./weeks/week4.md)                                                 | 
 | Day 24     | [流体计算域问题](./weeks/week4.md)                                                |                                
-| Day 25    | [结构化网格和非结构化网格](./weeks/week5.md)                                        |      
+| Day 25     | [结构化网格和非结构化网格](./weeks/week5.md)                                        |      
+| Day 26     | [网格单元质量检查（Hypermesh）](./weeks/week5.md)                                   |      
