@@ -55,6 +55,60 @@
 * 简单模型
 
 
-- [x]网格精度 
+- [x] 网格精度 
 
 计算精度主要在于网格的质量（正交性，长宽比），并不决定于拓扑
+
+## Day 26 网格单元质量检查（Hypermesh）
+
+对于2D单元，检查项主要包括：
+
+- [x] 翘曲度（warpage）：
+ 用来衡量一个单元偏离平面的程度，仅适用于四边形单元，将四边形单元沿其对角线分成两个三角形，这两个三角形单元法向量之间的夹角（锐角）定义为该四边形网格的翘曲度。理想值=0度，可接受值<16度。
+
+<img width="586" alt="image" src="https://user-images.githubusercontent.com/43568675/187349778-13eab73d-5721-408f-bcd8-bae0a811167a.png">
+
+
+
+- [x] 长宽比（aspect）：单元最长边与该单元最短边之比。理想值=1，可接受值<5。
+
+<img width="433" alt="image" src="https://user-images.githubusercontent.com/43568675/187349821-caf7a474-af54-4f65-91bd-a06d0cb258da.png">
+
+
+- [x] 扭曲度（skew）：也称偏斜度，对于四边形单元定义为90度-两条中线夹角的最小值；三角形单元定义为90度-每个顶点与对边中点连线与两相邻边的中线夹角的最小值。理想值=0度，可接受值<60度。
+
+<img width="259" alt="image" src="https://user-images.githubusercontent.com/43568675/187349935-2f246092-d699-40a3-91d2-3b825cbfaecc.png">
+
+
+- [x] 弦差（chordal deviation）：用于检查网格边线对实际几何曲线的模拟情况，定义为单元边中点距曲面的最大距离。
+
+- [x] 雅克比（jacobian）：评价一个单元偏离完美单元的程度。完美四边形单元为正方形，完美三角形单元为等边三角形。雅克比的取值在0到1之间，理想值=1，可接受值>0.6。
+
+- [x] 长度（length）：三角形单元或四边形单元角点至对边的距离。最短距离称为最小长度min length。
+
+- [x] 锥度（taper）：对于四边形单元，沿两条对角线可将其划分为四个三角形。锥度定义为：
+
+Taper=1-(Atri/(0.5*Aquad))min。锥度理想值=0，可接受值<0.5。
+
+- [x]  内角（angle）：扭曲度基于单元的全局形状，不考虑四边形或三角形的单个内角。内角用来检查单元单个内角的大小。四边形单元内角的理想值为90度，可接受值为[40, 135]度；三角形单元内角的理想值为60度，可接受值为[20, 120]度。
+
+对于3D单元，增加检查项：
+
+- [x] 四面体坍塌比（tet collapse）：
+
+Tet collapse=h*1.24/A。 坍塌比理想值=1，可接受值>0.1，也就是说，对于一些不规则复杂模型，通常保证雅克比大于0.1即可以进行分析。
+
+<img width="492" alt="image" src="https://user-images.githubusercontent.com/43568675/187349850-d9204522-e398-4ab8-9042-4d4b306cb26e.png">
+
+附：另外体网格生成之后，首先共节点，然后通过tool->find face生成对应的表面网格，最后通过tool->edges检查面网格是否存在自由边和T形边，若存在T形边，删除重复的体网格。
+
+附图：
+<img width="580" alt="image" src="https://user-images.githubusercontent.com/43568675/187350011-231c7f4c-8c8e-4d54-9d49-55ba3f6dda77.png">
+
+附图一 2D单元质量指标
+
+<img width="571" alt="image" src="https://user-images.githubusercontent.com/43568675/187350039-553bd924-cfbb-4197-895b-4e85bf048d80.png">
+
+
+附图二 单元质量检查控制参数
+备注：上述总结参考GB/T 33582-2017。
