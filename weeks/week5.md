@@ -112,3 +112,27 @@ Tet collapse=h*1.24/A。 坍塌比理想值=1，可接受值>0.1，也就是说�
 
 附图二 单元质量检查控制参数
 备注：上述总结参考GB/T 33582-2017。
+
+## Day 27 ANSYS Multizone Meshing创建六面体网格 1
+ 
+ > [ANSYS Multizone Meshing创建六面体网格]（https://www.bilibili.com/read/cv8061531?from=search&spm_id_from=333.337.0.0）
+ ANSYS Meshing是ANSYS Workbench的一个组件，集成了ICEM CFD、TGRID (Fluent Meshing)、CFX-Mesh、Gambit网格划分功能，具有较为强大的前处理网格划分能力。
+- [x] 网格划分目录树如图1所示，网格划分基本流程一般需要考虑如下内容：
+
+① 全局网格设置；
+
+② 局部网格划分；
+
+③ 网格划分问题排除；
+
+④ 虚拟拓扑；
+
+⑤ 预览或生成网格；
+
+⑥ 检查网格质量等。
+
+其中ANSYS Meshing网格划分方法中的多区Multizone Meshing划分方法基于ICEM CFD 六面体模块，能进行自动几何分解，相对扫掠方法不需要对元件切块，即可获得纯六面体网格（复杂结构依旧需要切块），对于一些球、圆柱、简易几何具有很好应用。
+
+本文从多区Multizone Meshing方法出发，借助边尺寸控制Edge Sizing、映射面网格划分Mapped Face meshing、虚拟拓扑Virtual Topology以及模型切块操作等，对如何快速进行简单结构六面体网格划分进行案例说明。
+
+在未来的文字中也会介绍如何对复杂结构基于顺序划分方法进行高度六面体划分的应用。 
