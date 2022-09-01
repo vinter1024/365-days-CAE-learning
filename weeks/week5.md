@@ -115,7 +115,7 @@ Tet collapse=h*1.24/A。 坍塌比理想值=1，可接受值>0.1，也就是说�
 
 ## Day 27 ANSYS Multizone Meshing创建六面体网格 1
  
- > [ANSYS Multizone Meshing创建六面体网格]（https://www.bilibili.com/read/cv8061531?from=search&spm_id_from=333.337.0.0）
+ > [ANSYS Multizone Meshing创建六面体网格](https://www.bilibili.com/read/cv8061531?from=search&spm_id_from=333.337.0.0)
  ANSYS Meshing是ANSYS Workbench的一个组件，集成了ICEM CFD、TGRID (Fluent Meshing)、CFX-Mesh、Gambit网格划分功能，具有较为强大的前处理网格划分能力。
 - [x] 网格划分目录树如图1所示，网格划分基本流程一般需要考虑如下内容：
 
@@ -136,3 +136,36 @@ Tet collapse=h*1.24/A。 坍塌比理想值=1，可接受值>0.1，也就是说�
 本文从多区Multizone Meshing方法出发，借助边尺寸控制Edge Sizing、映射面网格划分Mapped Face meshing、虚拟拓扑Virtual Topology以及模型切块操作等，对如何快速进行简单结构六面体网格划分进行案例说明。
 
 在未来的文字中也会介绍如何对复杂结构基于顺序划分方法进行高度六面体划分的应用。 
+
+
+
+## Day 28  ANSYS Multizone Meshing创建六面体网格 2
+
+- [x] 六面体网格划分方法
+
+1. 扫掠划分（Sweep Meshing）
+2. 六面体支配（Hex Dominant）
+3. 多区（Multizone Meshing） 
+多区（Multizone Meshing）基于ICEM CFD 六面体模块，自动几何分解，对于采用扫掠方法必要时，需要对元件切块来得到纯六面体网格，但多区划分可立即对其网格划分（依旧推荐一定程度的切分），支持膨胀划分 
+<img width="371" alt="image" src="https://user-images.githubusercontent.com/43568675/187831440-3f652ea4-bfe7-46e1-b1b0-03a6a41d370c.png">
+
+* 映射网格方法（Mapped Mesh Type）包括如下：
+
+1、Hexa ：默认方法，仅有六面体单元生成。
+
+2、Hexa/prism：考虑划分质量与过渡，三角形会在源面出现，导致出现六面体与棱柱单元。
+
+3、Prism ：仅棱柱单元产生，用于临近结构的生成网格为四面体情况。
+
+
+
+* 面网格划分方法（Surface Mesh Method）包括如下：
+
+1、Uniform：使用递归循环切割方法，能够创建高度一致的网格。
+
+2、Pave：能够创建高曲率的面网格，相邻边有高的纵横比。
+
+3、program controlled：根据网格尺寸设置与面特点综合使用上述两种方法。
+
+
+- [x] Edge Sizing尺寸设置 
