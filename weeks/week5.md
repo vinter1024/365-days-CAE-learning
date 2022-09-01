@@ -169,3 +169,18 @@ Tet collapse=h*1.24/A。 坍塌比理想值=1，可接受值>0.1，也就是说�
 
 
 - [x] Edge Sizing尺寸设置 
+
+
+1、Element Size定义边平均单元边长。
+
+2、 Number of Divisions定义边的单元分数。
+
+3、偏斜类型【Bias Type】指定单元大小相对边的一端、两端或者边中心的渐变效果。
+
+4、偏斜因子【Bias Factor】定义最大单元边长与最小单元边长的比值。
+
+5、【Soft】选项的单元大小将会受到整体划分单元大小的功能，如基于相邻、曲率的网格设置，以及局部网格控制的影响。
+
+6、【Hard】严格控制单元尺寸。 
+
+<img width="594" alt="image" src="https://user-images.githubusercontent.com/43568675/187895669-00e2771a-d490-43e9-b2a1-9d3c5b337cce.png">
