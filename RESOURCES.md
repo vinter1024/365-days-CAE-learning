@@ -2,6 +2,9 @@
 
 用于学习资料资源的罗列和查找
 
+## 结构
+  [ANSYS Workbench软件自学有限元应力分析](http://v.xue.taobao.com/learn.htm?itemId=567213182976)
+
 ## CFD 
 
 ~~[无痛CFD入门21讲](https://www.fangzhenxiu.com/course/1281912/1303144)~~
