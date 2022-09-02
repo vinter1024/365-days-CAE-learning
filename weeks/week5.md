@@ -184,3 +184,17 @@ Tet collapse=h*1.24/A。 坍塌比理想值=1，可接受值>0.1，也就是说�
 6、【Hard】严格控制单元尺寸。 
 
 <img width="594" alt="image" src="https://user-images.githubusercontent.com/43568675/187895669-00e2771a-d490-43e9-b2a1-9d3c5b337cce.png">
+
+## Day 29 ansys workbench 工程材料属性定义及如何使用
+
+- [x] engineering data 定义材料
+1. 使用软件自带材料
+Engineering Data sources
+<img width="389" alt="image" src="https://user-images.githubusercontent.com/43568675/188062059-abac7427-b0f0-4305-804b-faa79dfc6cd2.png">
+
+2. 自定义材料
+<img width="1032" alt="image" src="https://user-images.githubusercontent.com/43568675/188062420-3ac3d469-936d-46de-8d9d-4a1876644f0c.png">
+
+<img width="614" alt="image" src="https://user-images.githubusercontent.com/43568675/188061833-3295269f-9e18-486f-ba18-d175316618d0.png">
+* 弹性模量（杨氏模量）
+* 泊松比
