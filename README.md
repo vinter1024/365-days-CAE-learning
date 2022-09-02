@@ -56,4 +56,4 @@ To learn CAE product in 365 days
 | Day 26     | [网格单元质量检查（Hypermesh）](./weeks/week5.md)                                   |      
 | Day 27     | [ANSYS Multizone Meshing创建六面体网格1](./weeks/week5.md)                         |    
 | Day 28     | [ANSYS Multizone Meshing创建六面体网格2](./weeks/week5.md)                         |    
-| Day 28     | [ANSYS workbench 工程材料属性定义及如何使用](./weeks/week5.md)                       |   
+| Day 29     | [ANSYS workbench 工程材料属性定义及如何使用](./weeks/week5.md)                       |   
