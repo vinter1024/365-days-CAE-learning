@@ -198,3 +198,27 @@ Engineering Data sources
 <img width="614" alt="image" src="https://user-images.githubusercontent.com/43568675/188061833-3295269f-9e18-486f-ba18-d175316618d0.png">
 * 弹性模量（杨氏模量）
 * 泊松比
+
+## Day 30 DesignModeler
+
+- [x] 建模环境与SolidWorks相似，但更为复杂，环境友好性低。
+
+- [x] 在三维模型可创建imprint face，便于施加局部载荷； 
+
+- [x] 模型存在实体（激活体）和冻结体freeze两种状态，导入模型时可选择更改，其中冻结体不可切除cut material，且在此状态下才可以完成切片，分为多个body。
+* 1个part的多个实体body会自动发生merge。（All frozen bodies will be ignored when it comes to the Add, Cut, or Imprint Material operation of any features following the Freeze。） 
+
+- [x]  可通过选择 Create > ==Body Operation==选定体，把Type设成Sew ， 并设定Create Solids?为Yes将面体转换成实体。
+
+- [x] 2D分析有下述特征：
+ （1）对树中的geometry条目，在其细节视图中的2d behavior域，有下述选项：平面应力（plane stress缺省的）--假设在Z方向上应力为0，但是应变不为0.这对于那种Z方向的尺寸远远小于X,Y两个方向尺寸的结构是合适的。如受到面内载荷的平板，或在压力或径向载荷下的圆盘。如果想输入这种模型的厚度，可以在==thickness==域中输入。
+ 
+ （2）轴对称(axisymmetric)----假设一个3-D模型及其载荷可以通过围绕Y轴旋转一个2D的截面而形成。==对称轴必须和全局的Y轴保持一致==。几何体必须是在正X轴和X-Y面内。方向是：Y轴是轴向的，X轴是径向的，Z轴是环向。环向位移是0，环向应力和环向应变通常很重要。典型的例子是压力容器，直管，轴等。在形状优化分析中不能使用轴对称行为。
+ 
+ （3）平面应变(plain strain)---假设Z方向上没有应变。这对于Z方向的尺寸远大于X,Y尺寸的结构是合适的。Z方向的应力不为0.例子如常的等截面构建如结构线性物体。平面应变行为在热分析或形状优化分析中不可用。
+ 
+ （4）一般的平面应变(generalized plane strain)—相对于标准的平面应变问题而言，假设在Z方向上有一个有限的变形域。
+ 
+ 对于存在Z方向尺寸的物体，它提供了一个更实际的结果。基于物体（by body）这允许对geometry下单个的物体设置平面应力，平面应变或者轴对称选项。如果你选择了by body,则请选择单个的物体，然后为其设置单独的2-D选项。对于2-D分析，可以使用在3-D分析中同样的方式以施加载荷和支撑，载荷和结果都是X-Y面内而没有Z向分量。+     
+ 
+ PS：下述载荷在2-D分析中不能使用：螺栓预紧载荷，线性压力，简单支撑，固定转动。- 包围体操作创建流体域更为便利；- 创建中面：如模型有不变截面积，可以用壳来离散该模型，从而可以节省时间与CPU资源。
