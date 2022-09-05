@@ -58,4 +58,5 @@ To learn CAE product in 365 days
 | Day 28     | [ANSYS Multizone Meshing创建六面体网格2](./weeks/week5.md)                         |    
 | Day 29     | [ANSYS workbench 工程材料属性定义及如何使用](./weeks/week5.md)                       |   
 | Day 30     | [DesignModeler](./weeks/week5.md)                                                | 
-| Day 30     | [workbench mechanical](./weeks/week5.md)                                         | 
+| Day 31     | [workbench mechanical](./weeks/week5.md)                                         | 
+| Day 32     | [ABAQUS的网格划分](./weeks/week6.md)                                               | 
