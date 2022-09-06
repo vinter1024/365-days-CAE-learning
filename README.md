@@ -60,3 +60,4 @@ To learn CAE product in 365 days
 | Day 30     | [DesignModeler](./weeks/week5.md)                                                | 
 | Day 31     | [workbench mechanical](./weeks/week5.md)                                         | 
 | Day 32     | [ABAQUS的网格划分](./weeks/week6.md)                                               | 
+| Day 33     | [comsol 手动网格剖分技巧：几何分割的概念](./weeks/week6.md)                            | 
