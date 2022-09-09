@@ -341,3 +341,81 @@ COMSOL Multiphysics 中网格划分序列的屏幕截图，其中高亮显示了
 - [x] 总结
 1. 网格剖分序列中的操作顺序对最终的网格有影响，这是因为生成的网格是固定的，因此来自前一个操作节点的任何网格都是后续操作的基础。
 2. 最佳做法是使用尽可能少的操作，并添加全局或局部大小 节点。此外，如果你需要在序列中进行多个操作（例如，想要使用不同的单元类型），考虑它们的顺序非常重要。
+
+## Day 36 Hypermesh三维网格划分
+
+> [Hypermesh三维网格划分](https://zhuanlan.zhihu.com/p/71398148)
+
+- [x] 网格划分步骤
+1. 几何部件分组及重命名
+2. 几何部件修复处理，切分区域
+3. 规划二维单元划分顺序和路径，检查并通过质量要求
+4. 三维网格生成（包含各种网格生成方法）
+5. 单元质量检查和改善
+6. 自由边及自由面检查
+
+- [x] 网格划分实例
+<img width="546" alt="image" src="https://user-images.githubusercontent.com/43568675/189312239-5fb09dd1-3083-4007-a076-69e4816fed0d.png">
+
+1、由于结构较为单一，也无需进行修复完善。首先我们基于网格划分要求，对连杆结构进行切分。因为整个结构存在对称性，所以直接切取1/4部分进行网格划分，然后通过对称操作获得整体结构的网格模型，切分之后的几何体如图2和图3所示。
+
+
+实体区域切分的好坏对整个划分工作具有引领的作用，切分的好，后续工作基本如鱼得水，否则又是各种烦杂操作，所以切忌着急动手，先在心中打草稿规划。
+
+<img width="461" alt="image" src="https://user-images.githubusercontent.com/43568675/189312316-35f83f2c-b908-4cb7-8bc2-7f5d2f377189.png">
+图2 切出1/4几何体
+
+<img width="674" alt="image" src="https://user-images.githubusercontent.com/43568675/189312372-68c3b77f-f28b-4fce-8515-f1a4e9e6247b.png">
+
+图3 1/4几何体切分结果
+在进行几何体的切分之时，主要涉及的命令有硬点的添加、实体的编辑操作（切割、删除等）、面切割等，各命令面板如图4所示。
+
+
+<img width="1005" alt="image" src="https://user-images.githubusercontent.com/43568675/189312781-c188ea51-c607-4970-aa4a-9ef34364dc3f.png">
+<img width="1003" alt="image" src="https://user-images.githubusercontent.com/43568675/189312821-751b4188-7dfc-4078-bc84-12cee8e27ff1.png">
+<img width="1003" alt="image" src="https://user-images.githubusercontent.com/43568675/189312890-0e66adc9-6a72-4d42-83e7-c991d7a0f8da.png">
+
+
+图4 命令面板
+
+
+2、实体进行切分之后，我们可以删除实体基于面划分网格，也可以直接进行二维单元的划分，直接利用automesh等二维网格划分命令进行操作。
+
+基本是在本步骤按照常规的操作即可，绘制满足要求的单元并有利于实体网格的生成。绘制结果部分如图5所示。
+
+<img width="623" alt="image" src="https://user-images.githubusercontent.com/43568675/189313524-0876cf83-f308-440f-989c-d80505e5e45b.png">
+
+图5 二维网格单元
+3、生成三维实体单元。实体单元生成主要依赖于常用的几个命令如general、line drag等，如图6所示。
+
+<img width="663" alt="image" src="https://user-images.githubusercontent.com/43568675/189313555-5ece11ac-adcc-45d0-8f96-406327de98ec.png">
+
+图6 实体单元生成面板
+以切分出的相贯区域为例，我们可以利用general命令实现实体单元的生成。如图7所示，单击element选择二维单元，然后单击surf选中目标面，最后通过along gemo:mixed对单元的生成进行限制，生成实体单元。
+
+<img width="669" alt="image" src="https://user-images.githubusercontent.com/43568675/189313594-06af6f68-d882-41af-bdfa-472f0ee4ffa4.png">
+
+<img width="617" alt="image" src="https://user-images.githubusercontent.com/43568675/189313619-af6d71b0-d425-4282-8679-53b3a78b3d1a.png">
+
+
+
+图7 general生成实体网格
+4、同样的方法，生成其它区域的实体单元，如图8所示，最后生成整体的1/4网格单元，并检查单元之间的节点连接，如图9所示。
+
+
+图8 其它区域的实体网格实现
+
+图9 1/4实体网格
+5、镜像生成整体连杆结构的实体单元，如图10所示。镜像过程需要对原始的网格进行复制（duplicate）。
+
+
+
+图10 整体实体单元的生成
+6、对整体实体单元的节点连续性进行检查，利用tool面板下的face命令生成单元表面，然后再后处理中进行切割展示，如图11所示，可以看到整个结构内部中空不存在额外的多余连接面，表明网格连续。
+
+
+图11 网格检查结果
+通过以上各步骤操作，我们基本上完成了连杆结构的三维网格划分，并且能够获得较为满意的实体单元，最终如图12所示。
+
+
+图12 连杆三维单元划分结果
