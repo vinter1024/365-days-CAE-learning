@@ -62,5 +62,6 @@ To learn CAE product in 365 days
 | Day 32     | [ABAQUS的网格划分](./weeks/week6.md)                                               | 
 | Day 33     | [comsol 手动网格剖分技巧：几何分割的概念](./weeks/week6.md)                            | 
 | Day 34     | [网格划分设计](./weeks/week6.md)                                                    | 
-| Day 35     | [COMSOL网格剖分中不同尺寸设置的最佳方式](./weeks/week6.md)                               | 
-| Day 36     | [Hypermesh三维网格划分](./weeks/week6.md)                                          | 
+| Day 35     | [COMSOL网格剖分中不同尺寸设置的最佳方式](./weeks/week6.md)                             | 
+| Day 36     | [Hypermesh三维网格划分](./weeks/week6.md)                                           | 
+| Day 37     | [网格类型和精度](./weeks/week6.md)                                                  | 
