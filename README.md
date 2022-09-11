@@ -65,3 +65,4 @@ To learn CAE product in 365 days
 | Day 35     | [COMSOL网格剖分中不同尺寸设置的最佳方式](./weeks/week6.md)                             | 
 | Day 36     | [Hypermesh三维网格划分](./weeks/week6.md)                                           | 
 | Day 37     | [网格类型和精度](./weeks/week6.md)                                                  | 
+| Day 38     | [网格在结构分析中应用](./weeks/week6.md)                                                  | 
