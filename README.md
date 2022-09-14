@@ -67,3 +67,5 @@ To learn CAE product in 365 days
 | Day 37     | [网格类型和精度](./weeks/week6.md)                                                  | 
 | Day 38     | [网格在结构分析中应用](./weeks/week6.md)                                             | 
 | Day 39     | [3D几何网格划分方法](./weeks/week6.md)                                              | 
+| Day 40     | [Automatic（自动网格划分）](./weeks/week7.md)                                       | 
+| Day 41     | [Tetrahedrons（四面体网格划分）](./weeks/week7.md)                                   | 
