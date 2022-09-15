@@ -28,6 +28,7 @@ Scope 下的 Geometry（几何模型）用来选择所要划分网格的几何�
 Element Midside Nodes（单元中间节点）包括 Use Global Setting（使用选项设置）、Dropped（去掉中间节点）和 Kept（保留中间节点）。
 
 ## Day 41 Tetrahedrons（四面体网格划分）
+
 - [x] 特点
 1. 对于任意几何体都可以使用，可以快速、自动生成，并适用于复杂几何，在关键区域容易使用曲度和近似尺寸功能自动细化网格，可使用膨胀细化实体边界附近的网格（边界层识别）。
 2. 在近似网格密度情况下，单元和节点数高于六面体网格，一般不可能使网格在一个方向排列，由于几何和单元性能的非均质性，不适合于薄实体或环形体。
@@ -60,3 +61,5 @@ Curvature and Proximity Refinement（曲率和邻近细化）系统默认为 Yes
 Smooth Transition（平滑度）系统默认为 Off，当选择 ON 时，系统将提供一个默认值，用户可以根据工程实际进行调整。Growth Rate（增长比例）系统默认为 0，最大可设置为 5。Minimum Edge Length（最小线段长度）系统也提供了一个默认值供参考，用户也可以根据工程实际进行调整设置。
 
 Write ICEM CFD Files（写入 ICEM CFD 文件）系统默认选项为 NO，用户还可根据工程的实际需要进行其他选择，这里提供了其他 3 种选项，包括 Yes、Interactive（交互作用）和 Batch（批处理）。当选择 Interactive（交互作用）时，将弹出如图 8-22 所示的 ICEM CFD Behavior 选项。ICEM CFD Behavior 提供了两个选项，Post Operation（后操作）和 Override Method（覆盖方式）。当选择 Batch（批处理）选项时，也将出现 Post Operation（后操作）和 Override Method（覆盖方式）两个选项。
+
+## Day 42  Hex Dominant（六面体主导网格法）
