@@ -63,3 +63,75 @@ Smooth Transition（平滑度）系统默认为 Off，当选择 ON 时，系统�
 Write ICEM CFD Files（写入 ICEM CFD 文件）系统默认选项为 NO，用户还可根据工程的实际需要进行其他选择，这里提供了其他 3 种选项，包括 Yes、Interactive（交互作用）和 Batch（批处理）。当选择 Interactive（交互作用）时，将弹出如图 8-22 所示的 ICEM CFD Behavior 选项。ICEM CFD Behavior 提供了两个选项，Post Operation（后操作）和 Override Method（覆盖方式）。当选择 Batch（批处理）选项时，也将出现 Post Operation（后操作）和 Override Method（覆盖方式）两个选项。
 
 ## Day 42  Hex Dominant（六面体主导网格法）
+
+- [x] 划分方式
+Hex Dominant（六面体主导网格）法则先生成四边形主导的面网格，再得到六面体，再按需要填充棱锥和四面体单元。
+
+- [x] 适用
+此方法对于不可扫掠的体，要得到六面体网格时被推荐，对内部容积大的体有用，对体积和表面积比较小的薄复杂体无用，对于 CFD 无边界层识别，主要对 FEA 分析有用。
+
+- [x] 操作步骤
+进行 Hex Dominant（六面体主导网格）操作的具体步骤为：右击 Mesh→Insert（插入）→Method（方式），在 Method（方式）右侧选择 Hex Dominant（六面体主导网格），打开 Hex Dominant（六面体主导网格）设置明细窗口。
+<img width="596" alt="image" src="https://user-images.githubusercontent.com/43568675/190551183-da048c20-e307-487d-8934-d0239058fb3d.png">
+
+Details of「Hex Dominant Method」–Method 明细窗口中的 Scope（作用域）与前面 Automatic（自动网格划分）一样，这里不再赘述。
+
+- [x] 操作选项
+Definition（定义）：包括 Suppressed（抑制）、Method（方式）、Element Midside Nodes （单元中间节点）、Free Face Mesh Type（自由面网格类型）和 Control Messages（控制信息）。其中 Suppressed（抑制）、Method（方式）、Element Midside Nodes（单元中间节点）与前面 Automatic（自动网格划分）一样。这里主要介绍一下 Free Face Mesh Type（自由面网格类型）。系统提供了两种网格，分别为 Quad/Tri（四边形/三角形）和 All Quad（全四边形），图 所示为选择两种不同网格时的效果图。Control Messages（控制信息）系统默认为 NO。
+<img width="604" alt="image" src="https://user-images.githubusercontent.com/43568675/190551765-6b7063f9-63bc-49c6-9d7c-80666c3d60c4.png">
+
+## Day 43 Sweep（扫掠法）
+
+- [x] 拓扑模型判定
+采用 Sweep（扫掠）法划分网格，首先应该确定体的拓扑模型是否能够进行扫掠，如果是下列情况之一，则不能扫掠：
+1. 体的一个或多个侧面包含多于一个环；体包含多于一个壳；体的拓扑源面与目标面不是相对的。
+2. 其次应该确定已定义合适的二维和三维单元类型，例如，如果对源面进行预网格划分，并想扫掠成包含二次六面体的单元，应当先用二次二维面单元对源面划分网格。
+接下来需要确定在扫掠操作中如何控制生成单元层数，即沿扫掠方向生成的单元数。
+然后确定体的源面和目标面。ANSYS 在源面上使用的是面单元模式（三角形或者四边形），用六面体或者楔形单元填充体。目标面是仅与源面相对的面。最后有选择地对源面、目标面和边界面划分网格。
+
+- [x] 操作步骤
+进行 Sweep（扫掠法）操作的具体步骤为：右击 Mesh→Insert（插入）→Method（方式），在 Method（方式）右侧选择 Sweep（扫掠法），打开 Sweep（扫掠法）设置明细窗口，如图所示。
+
+<img width="592" alt="image" src="https://user-images.githubusercontent.com/43568675/190561849-ebaf41f4-28ad-4a83-af74-117dee4441ed.png">
+Details of「Sweep Method」–Method 明细窗口中的 Scope（作用域）与前面 Automatic（自动网格划分）一样，这里不再赘述。
+
+
+- [x] 操作选项
+
+Definition（定义）：包括 Suppressed（抑制）、Method（方式）、Element Midside Nodes（单元中间节点）、Src/Trg Selection（Src/Trg 选项）、Free Face Mesh Type（自由面网格类型）、Type（类型）、Sweep Bias Type（扫掠偏差类型）和 Element Option（单元选项）。
+
+其中 Suppressed（抑制）、Method（方式）、Element Midside Nodes（单元中间节点）与前面 Automatic（自动网格划分）一样。这里主要介绍以下几个选项。
+
+·Src/Trg Selection（Src/Trg 选项）包括 5 个选项，分别是 Automatic、ManualSource、Manual Source and Target、Automatic Thin 和 Manual Thin。当选择 Automatic 时，Source 和 Target 系统都默认为 Program Controlled，用户不需要自己进行选择，如图所示。
+
+<img width="478" alt="image" src="https://user-images.githubusercontent.com/43568675/190562078-47b5f584-9adf-4c09-986e-299e722a777f.png">
+
+
+当选择 Manual Source 和 Manual Thin 时，均需要用户自己选择 Source，如图 所示，区别在于前者的 Target 系统默认为 Program Controlled，而后者只考虑 Source，而未考虑 Target。
+
+<img width="614" alt="image" src="https://user-images.githubusercontent.com/43568675/190562121-d1e6d08c-dcf3-4fb7-97c5-fe699e2790ef.png">
+
+
+
+当选择 Manual Source and Target 时，用户需要自己选择 Source 和 Target，如图 所示。当选择 Automatic Thin 时，系统默认 Source 为 Program Controlled，用户不需要自己进行选择，如图所示。
+<img width="536" alt="image" src="https://user-images.githubusercontent.com/43568675/190563138-074eee4d-0f00-42ac-81c3-e5371e2d4c21.png">
+
+<img width="470" alt="image" src="https://user-images.githubusercontent.com/43568675/190562234-f9894460-ace1-428f-bac8-0bc73ae5305a.png">
+
+
+
+
+·Free Face Mesh Type（自由面网格类型）包括 3 个选项，分别为 All Tri（全三角形）、Quad/Tri（四边形/三角形）和 All Quad（全四边形）。图所示为分别选择 All Tri（全三角形）和 Quad/Tri（四边形/三角形）时划分的网格。
+<img width="478" alt="image" src="https://user-images.githubusercontent.com/43568675/190562896-c4050bb0-515c-4a2b-9d06-3f9622d6ee01.png">
+
+<img width="622" alt="image" src="https://user-images.githubusercontent.com/43568675/190562303-a35bd50d-f712-4579-ae52-200578663781.png">
+
+
+·Type（单元）包括两个选项，分别是 Element Size 和 Number of Divisions，系统默认为 Number of Divisions。当选择 Number of Divisions 时，如图  所示，我们从图中可以看到 Sweep Num Divs 系统默认值为 0，可以根据工程实际自己进行调整。当我们把 Sweep Num Divs 数值设置为 2 和 4 时，可以得到图  所示的网格。
+
+<img width="592" alt="image" src="https://user-images.githubusercontent.com/43568675/190563103-11937152-dcd2-4a96-a0cc-08dfbb17e1bc.png">
+
+
+
+
+·Sweep Bias Type（扫掠偏差类型）包括 5 个选项，系统默认为 NO Bias。当选择其他 4 个选项时，将会出现 Sweep Bias 选项，默认为 0。如图 8-33 所示，当我们依次选择 4 种类型，设置 Sweep Bias 为 20 时，得到不同的网格效果。
