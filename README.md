@@ -71,3 +71,4 @@ To learn CAE product in 365 days
 | Day 41     | [Tetrahedrons（四面体网格划分）](./weeks/week7.md)                                   | 
 | Day 42     | [Hex Dominant（六面体主导网格法）](./weeks/week7.md)                                 | 
 | Day 43     | [Sweep（扫掠法）](./weeks/week7.md)                                                 | 
+| Day 44     | [MultiZone（多区法）](./weeks/week7.md)                                             | 
