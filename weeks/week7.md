@@ -135,3 +135,31 @@ Definition（定义）：包括 Suppressed（抑制）、Method（方式）、El
 
 
 ·Sweep Bias Type（扫掠偏差类型）包括 5 个选项，系统默认为 NO Bias。当选择其他 4 个选项时，将会出现 Sweep Bias 选项，默认为 0。如图 8-33 所示，当我们依次选择 4 种类型，设置 Sweep Bias 为 20 时，得到不同的网格效果。
+
+## Day 44 MultiZone（多区法）
+
+- [x] 特点
+MultiZone（多区网格划分）的特征是自动分解几何，从而避免将一个体分裂成可扫掠体以用扫掠方法得到六面体网格。MultiZone（多区网格划分）不利用高级尺寸功能（只用 Patch Conforming 四面体和扫掠方法）。MultiZone（多区网格划分）的源面选择不是必须的，但是是有用的，可以拒绝或允许自由网格程序块。
+
+- [x] 操作步骤
+进行 MultiZone（多区网格划分）的具体步骤为：右击 Mesh→Insert（插入）→Method （方式），在 Method（方式）右侧选择 MultiZone（多区网格划分），打开 MultiZone（多区网格划分）设置明细窗口，如图所示。
+
+![image](https://user-images.githubusercontent.com/43568675/190862030-a69b456c-002e-488e-837f-56fa488bcaea.png)
+
+Details of「MultiZone Method」–Method 明细窗口中的 Scope（作用域）与前面 Automatic（自动网格划分）一样，这里不再赘述。
+
+
+- [x] 操作选项
+
+Definition（定义）：包括 Suppressed（抑制）、Method（方式）、Mapped Mesh Type（映射网格类型）、Surface Mesh Type（表面网格类型）、Free Mesh Type（自由网格类型）、Element Midside Nodes（单元中间节点）和 Src/Trg Selection（Src/Trg 选项）。其中 Suppressed（抑制）、Method（方式）、Element Midside Nodes（单元中间节点）、Src/Trg Selection（Src/Trg 选项）与前面 Automatic（自动网格划分）一样。其中 Mapped Mesh Type（映射网格类型）包括 Hexa（六面体）、Hexa/Prism（六面体/棱柱）和 Prism（棱柱）3 种。
+
+![image](https://user-images.githubusercontent.com/43568675/190862077-7a4e40ac-8d02-4a7f-947d-34c90bede332.png)
+
+
+Surface Mesh Type（表面网格类型）包括 Program Controlled、Uniform 和 Pave 3 种类型。图 8-36 所示为不同表面网格类型产生的网格。
+
+![image](https://user-images.githubusercontent.com/43568675/190862094-8c6c083f-5d53-4fd1-9d70-83a25f2bfa0d.png)
+
+Free Mesh Type（自由网格类型）包括 Not Allowed（不允许）、Tetra（四面体）、Hexa Dominant（六面体-支配）和 Hexa Core（六面体-核心）。
+
+Advanced（高级选项）：Mesh Based Defeaturing（基于几何损伤的网格）、Minimum Edge Length（最小线段长度）和 Write ICEM CFD Files（写入 ICEM CFD 文件）。前面章节已有详细介绍，这里不再赘述。
