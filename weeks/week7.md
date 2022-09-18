@@ -163,3 +163,60 @@ Surface Mesh Type（表面网格类型）包括 Program Controlled、Uniform 和
 Free Mesh Type（自由网格类型）包括 Not Allowed（不允许）、Tetra（四面体）、Hexa Dominant（六面体-支配）和 Hexa Core（六面体-核心）。
 
 Advanced（高级选项）：Mesh Based Defeaturing（基于几何损伤的网格）、Minimum Edge Length（最小线段长度）和 Write ICEM CFD Files（写入 ICEM CFD 文件）。前面章节已有详细介绍，这里不再赘述。
+
+## Day 45 Inflation（膨胀法）
+
+- [x] 操作步骤
+进行 Inflation（膨胀法）的具体步骤为：单击 Mesh 选项，弹出 Details of Mesh 面板，在 Details of Mesh 下选择 Inflation（膨胀法）选项，打开 Inflation（膨胀法）设置明细窗口，如图。
+
+![image](https://user-images.githubusercontent.com/43568675/190899433-59e78315-4a48-4482-8395-ed520aa5dfc9.png)
+
+Inflation（膨胀法）包括 Use Automatic Inflation（使用自动控制膨胀层）、Inflation Option（膨胀层选项）、Inflation Algorithm（膨胀层算法）和 View Advanced Options（显示高级选项）。
+
+1. Use Automatic Inflation（使用自动控制膨胀层）包括 3 个选项，
+* None（不使用自动控制膨胀层）  系统默认的选项
+* Program Controlled（程序控制膨胀层）
+* All Faces in Chosen Named Selection（以命名选择所有面）
+
+
+
+2. Inflation Option（膨胀层选项）包括 5 个选项，
+* Total Thickness（总厚度）        
+当选择 Total Thickness（总厚度）时（见图 8-38），Number of Layers（膨胀层层数）系统默认为 5，最小为 1；Growth Rate（增长速率）系统默认为 1.2；Maximum Thickness（最大厚度）需要用户自定义。这几个参数用户均可根据工程实际进行调整。
+![image](https://user-images.githubusercontent.com/43568675/190899620-21fe1b65-ef23-46a6-b92c-08647ecb3027.png)
+
+
+
+* First Layer Thickness（第一层厚度）
+当选择 First Layer Thickness（第一层厚度）时（见图 8-39），First Layer Height（第一层高度）需要用户自定义；Maximum Layers（最大边膨胀层层数），系统默认为 5，最小为 1；Growth Rate（增长速率）系统默认为 1.2。
+![image](https://user-images.githubusercontent.com/43568675/190899672-9a206f5f-cb15-486d-a613-64d16e5b42bc.png)
+
+
+
+
+* Smooth Transition（平滑过渡）
+当选择 Smooth Transition（平滑过渡）时（见图 8-40），Transition Ratio（平滑比率）系统默认为 0.272，Maximum Layers（最大边膨胀层层数）和 Growth Rate（增长速率）同上。
+![image](https://user-images.githubusercontent.com/43568675/190899683-57b13b0d-3fc0-4075-8ee4-448aa15fdf88.png)
+
+
+
+* First Aspect Ratio（第一个网格的宽高比）
+当选择 First Aspect Ratio（第一个网格的宽高比）时（见图 8-41），First Aspect Ratio（第一个网格的宽高比）系统默认为 5，Maximum Layers（最大边膨胀层层数）和 Growth Rate（增长速率）同上。
+![image](https://user-images.githubusercontent.com/43568675/190899708-ee549682-a86b-42f0-b8d0-e8c4791073b8.png)
+
+
+
+*  Last Aspect Ratio（最后一个网格的宽高比）
+当选择 Last Aspect Ratio（最后一个网格的宽高比）时（见图 8-42），First Layer Height（第一层高度）需要用户自定义；Maximum Layers（最大边膨胀层层数）同上；Aspect Ratio（Base/Height）（宽高比）系统默认为 3。
+![image](https://user-images.githubusercontent.com/43568675/190899713-a9be1aa3-1231-4e2b-ba86-55ac3522f0e3.png)
+
+
+
+3. Inflation Algorithm（膨胀层算法）
+ 有 Pre（前处理）和 Post（后处理）两种。
+* Pre（前处理）基于 Tgrid 算法，所有物理模型的默认设置。首先表面膨胀，然后生成体网格，可应用扫掠和二维网格的划分，但是不支持邻近面设置不同的层数。
+* Post（后处理）基于 ICEM CFD 算法，使用一种在四面体网格生成后作用的后处理技术，后处理技术只对 Patching Conforming 和 Patch Independent 四面体网格有效。
+
+4. View Advanced Options（显示高级选项）包括 Yes 和 NO 两种选项，系统默认为 NO。
+当 View Advanced Options（显示高级选项）选择性 Yes 时，此时 Inflation（膨胀层）设置会增加图 8-43 所示的选项。
+![image](https://user-images.githubusercontent.com/43568675/190899840-b916cab9-caed-46e7-a712-a090c7cf437a.png)
