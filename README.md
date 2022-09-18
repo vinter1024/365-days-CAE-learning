@@ -72,3 +72,4 @@ To learn CAE product in 365 days
 | Day 42     | [Hex Dominant（六面体主导网格法）](./weeks/week7.md)                                 | 
 | Day 43     | [Sweep（扫掠法）](./weeks/week7.md)                                                 | 
 | Day 44     | [MultiZone（多区法）](./weeks/week7.md)                                             | 
+| Day 45     | [Inflation（膨胀法）](./weeks/week7.md)                                             | 
