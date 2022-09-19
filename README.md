@@ -73,3 +73,4 @@ To learn CAE product in 365 days
 | Day 43     | [Sweep（扫掠法）](./weeks/week7.md)                                                 | 
 | Day 44     | [MultiZone（多区法）](./weeks/week7.md)                                             | 
 | Day 45     | [Inflation（膨胀法）](./weeks/week7.md)                                             | 
+| Day 46     | [ABAQUS 的文件系统](./weeks/week8.md)                                               | 
