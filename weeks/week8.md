@@ -115,3 +115,68 @@ ABAQUS 除了数据库文件外，还包括用于输入、输出的文本文件�
     3. 虚拟拓扑
     4. 收缩控制
     5. 网格尺寸和膨胀设置
+
+## Day 48 ABAQUS 分析模块
+
+ABAQUS 包括三个主要的分析模块：ABAQUS/Standard、ABAQUS/Explicit 和 ABAQUS/CFD。此外，ABAQUS/Standard 中还附带了 ABAQUS/Aqua、ABAQUS/Design 及 ABAQUS/Foundation 三个特殊用途的分析模块。另外，ABAQUS 还提供了 MOLDFLOW 接口和 ADAMS 接口。
+
+ABAQUS/CAE 的集成工作环境，包括了 ABAQUS 的模型建立、交互式提交作业、监控运算过程及结果评估等能力，如图所示。
+特殊需求的用户可参阅《ABAQUS/CAE User's Manual》等帮助文档。
+
+
+<img width="442" alt="image" src="https://user-images.githubusercontent.com/43568675/191414309-1b676802-0159-4e05-8045-b0e753059e05.png">
+
+- [x] ABAQUS/Standard
+
+ABAQUS/Standard 是一个通用的分析模块。它能够求解广泛领域的线性和非线性问题，包括静态分析、动力分析、结构的热响应的分析，以及其他复杂非线性耦合物理场的分析。
+
+ABAQUS/Standard 为用户提供了动态载荷平衡的并行稀疏矩阵求解器、基于域分解并行迭代求解器和并行的 Lanczos 特征值求解器，可以对包含各种大规模计算的问题进行非常可靠的求解，并进行一般过程分析和线性摄动过程分析。
+
+- [x] ABAQUS/CAE
+
+ABAQUS/CAE（Complete ABAQUS Environment）是 ABAQUS 的交互式图形环境。它可以便捷地生成或者输入分析模型的几何形状，为部件定义材料特性、边界条件、载荷等模型参数。
+
+ABAQUS/CAE 具有强大的几何体划分网格的功能，可以检测所形成的分析模型，并在模型生成后提交、监视和控制分析作业，最后通过 Visualization 可视化模块显示得到的结果。
+
+ABAQUS/CAE 是目前为止唯一采用「特征」（feature-based）参数化建模方法的有限元前处理程序。用户可通过拉伸、旋转、放样等方法来创建参数化几何体，也可以导入各种通用 CAD 系统建立的几何体，并运用参数化建模方法对模型进行编辑。
+
+在 ABAQUS/CAE 中，用户能够方便地根据个人的需求设置 ABAQUS/Standard 或 ABAQUS/Explicit 对应的材料模型和单元类型，并进行网格划分。对部件间的接触、耦合、绑定等相互作用，ABAQUS 也能够方便地定义。
+
+- [x] ABAQUS/Explicit
+
+ABAQUS/Explicit 为显式分析求解器，适用于模拟短暂、瞬时的动态事件，以及求解冲击和其他高度不连续问题；此外，它对处理改变接触条件的高度非线性问题也非常有效，能够自动找出模型中各部件之间的接触对，高效地模拟部件之间的复杂接触，如模拟成型问题。它的求解方法是在短时间域内以很小的时间增量步向前推出结果，而无须在每个增量步求解耦合的方程系统和生成总刚。
+
+ABAQUS/Explicit 拥有广泛的单元类型和材料模型，但是它的单元库是 ABAQUS/Standard 单元库的子集。它提供的基于域分解的并行计算仅可进行一般过程分析。此外，需要注意的是，ABAQUS/Explicit 不但支持应力/位移分析，而且支持耦合的瞬态温度/位移分析、声—固耦合的分析。
+
+可见，ABAQUS/Explicit 和 ABAQUS/Standard 具有各自的适用范围，它们互相配合使得 ABAQUS 功能更加灵活和强大。有些工程问题需要二者的结合使用，以一种求解器开始分析，分析结束后将结果作为初始条件交与另一种求解器继续进行分析，从而结合显式和隐式求解技术的优点。
+
+- [x] ABAQUS/CFD
+
+ABAQUS/CFD 是 ABAQUS 新增加的流体仿真模块，新模块的增加使得 ABAQUS 能够模拟层流、湍流等流体问题，以及热传导、自然对流问题等流体传热问题。该模块的增加使得流体材料特性、流体边界、载荷，以及流体网格等与流体相关的前处理定义等都可以在 ABAQUS/CAE 里完成，同时还可以用 ABAQUS 输出等值面、流速矢量图等多种流体相关后处理结果。ABAQUS/CFD 使得 ABAQUS 在处理流—固耦合问题时拥有更优秀的表现，配合使用 ABAQUS/Explicit 和 ABAQUS/Standard，使得 ABAQUS 更加灵活和强大。
+
+- [x] ABAQUS/View
+
+ABAQUS/View 是 ABAQUS/CAE 的子模块，后处理功能中的可视化模块（Visualzation）就包含其中。
+
+- [x] ABAQUS/Design
+
+ABAQUS/Design 扩展了 ABAQUS 设计敏感度分析（DSA）中的应用。设计敏感度分析可用于预测设计参数变化对结构响应的影响。它是一套可选择模块，可以附加到 ABAQUS/Standard 模块。本书将不介绍该模块。
+
+- [x] ABAQUS/Aqua
+
+ABAQUS/Aqua 也是 ABAQUS/Standard 的附加模块，它主要用于海洋工程，可以模拟近海结构，也可以进行海上石油平台导管和立架的分析、基座弯曲的计算和漂浮结构的研究及 J 管道的受拉模拟。它的其他一些功能包括模拟稳定水流和波浪，对受浮力和自由水面上受风载的结构进行分析。本书将不介绍该模块。
+
+- [x] ABAQUS/Foundation
+
+ABAQUS/Foundation 是 ABAQUS/Standard 的一部分，它可以更经济的使用 ABAQUS/Standard 的线性静态和动态分析。本书将不介绍 ABAQUS/Foundation 模块的使用。
+
+- [x] MSC.ADAMS 接口
+
+ABAQUS 的 MSC.ADAMS 接口是基于 ADAMS/Flex 的子模态综合格式，它是 ABAQUS/Standard 的交互产品，使用户能够将 ABAQUS 同机械系统动力学仿真软件 MSC.ADAMS 一起配合使用，可将 ABAQUS 中的有限元模型作为柔性部分输入到 MSC.ADAMS 系列产品中。本书将不介绍该模块。
+
+- [x] MOLDFLOW 接口
+
+ABAQUS 的 MOLDFLOW 接口是 ABAQUS/Explicit 和 ABAQUS/Standard 的交互产品，使用户将注塑成型软件 MOLDFLOW 与 ABAQUS 配合使用，将 MOLDFLOW 分析软件中的有限元模型信息转换成 INP 文件的组成部分。本书将不介绍该模块。
+
+
+
