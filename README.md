@@ -76,3 +76,5 @@ To learn CAE product in 365 days
 | Day 46     | [ABAQUS 的文件系统](./weeks/week8.md)                                               | 
 | Day 47     | [Ansys 网格质量](./weeks/week8.md)                                                  | 
 | Day 48     | [ABAQUS 分析模块](./weeks/week8.md)                                                 | 
+| Day 49     | [](./weeks/week8.md)                                                 | 
+| Day 50     | [](./weeks/week8.md)                                                 | 
