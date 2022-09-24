@@ -176,7 +176,70 @@ ABAQUS 的 MSC.ADAMS 接口是基于 ADAMS/Flex 的子模态综合格式，它�
 
 - [x] MOLDFLOW 接口
 
-ABAQUS 的 MOLDFLOW 接口是 ABAQUS/Explicit 和 ABAQUS/Standard 的交互产品，使用户将注塑成型软件 MOLDFLOW 与 ABAQUS 配合使用，将 MOLDFLOW 分析软件中的有限元模型信息转换成 INP 文件的组成部分。本书将不介绍该模块。
+ABAQUS 的 MOLDFLOW 接口是 ABAQUS/Explicit 和 ABAQUS/Standard 的交互产品，使用户将注塑成型软件 MOLDFLOW 与 ABAQUS 配合使用，将 MOLDFLOW 分析软件中的有限元模型信息转换成 INP 文件的组成部分。
+
+## Day 49 Abaqus 部件模块（Part）和草图模块（Sketch）
+启动 ABAQUS 后，界面中出现 ABAQUS 的第一个功能模块——Part（部件）模块，Part 模块提供了强大的建模功能，支持两种建模方式：在 ABAQUS/CAE 中直接建模和从其他软件中导入模型。
+
+- [x] ABAQUS 中创建部件
+
+单击主菜单上的 Part→Create 命令，或者单击界面工具区，即图 2-1 中的 Create Part（创建部件）工具，将会弹出 Create Part（创建部件）对话框，如图 2-2 所示。
+![image](https://user-images.githubusercontent.com/43568675/192106137-a221a952-6c71-4912-a360-f1904713adc3.png)
+![image](https://user-images.githubusercontent.com/43568675/192106147-9e2aafa5-891e-4e6c-9385-f050633be3fb.png)
+
+
+在弹出的 Create Part 对话框中，可以选择调整的是 Name（part 的名称）和 Approximate size（部件的大致尺寸，其单位与模型的单位一致）项，其默认值分别为 Part-n（n 表示创建的第 n 个部件）和 200。其他选项均为单选项，具体介绍如下。
+
+1. Modeling Space：下面有三个选项，如表 2-1 所示。根据所要建立模型的空间结构选择其中的一个。
+表 2-1 Modeling Space 选项
+
+2. Options：只有当建立轴对称可变形体时，该选项 Include twist 才被激活，允许轴对称的结构绕对称轴发生扭曲。
+3. Typ e：为部件的类型，主要介绍下面三个选项，如表 2-2 所示。
+表 2-2 Type 选项
+4. Shape：为部件形态，随 Modeling Space 和 Type 选择的变化而变化，如表 2-3 所示。
+表 2-3 Shape 选项
+5. Type：为建模方式，仅当 Modeling Space 为 3D 且 Type 为 Deformable 或 Discrete rigid 时，该项才可选，如表 2-4 所示。本节将介绍前三种建模方式。
+表 2-4 Type 选项
+
+注意可以对部件的特性进行修改，在模型树中单击 Parts 前的，鼠标移至需要修改的 Part 上，单击鼠标右键，在弹出的命令菜单中单击 Edit 命令，弹出 Edit Part 对话框，如图 2-3 所示，可以修改该部件的 Modeling Space、Type 和 Options。
+
+图 2-3 Edit Part 对话框
+
+单击工具区中的 Part Manager（部件管理器）工具，弹出 Part Manager 对话框，如图 2-4 所示，其中列出了模型中的所有部件，可以创建（Create）、复制（Copy）、重命名（Rename）、删除（Delete）、锁定（Lock）、解锁（Unlock）、修正（Update Validity）、忽略操作（Dismiss）。
+
+图 2-4 Part Manager 对话框
+
+设置完图 2-2 中的对话框选项之后，单击 Continue…按钮，进入绘制平面草图的界面，如图 2-5 所示。使用界面左侧工具区中的工具，可以作出点、线、面，作为构成部件的要素（此处不再详细介绍，具体操作可通过相关的例子掌握）。
+
+图 2-5 绘制草图的界面
+
+- [x] 导入部件
+
+可以把建立好的模型导入 ABAQUS 中，导入分为下面两种情况，后面就这两种情况分别加以介绍。
+✧ 导入在其他 CAD 软件中建立的模型。
+✧ 导入 ABAQUS 建立后导出的模型。ABAQUS 提供了强大的接口，支持 Sketch（草图）、Part（部件）、Assembly（装配件）和 Model（模型）的导入，如图 2-6 所示。
+图 2-6 模型的导入菜单
+
+对于每种类型的导入，ABAQUS 都支持多种不同后缀名的文件，但导入的方法和步骤是类似的。另外，还支持 Sketch（草图）、Part（部件）、Assembly（装配）和 VRML（当前视窗的模型导出成 VRML 文件）的导出，如图 2-7 所示。
+
+图 2-7 导出菜单2.1.3 模型的修复与修改有时在导入模型后会出现警告对话框，这是由于导入过程中可能有部分几何元素丢失，使得模型无效或不精确，需要进行修复工作。1．模型的修复有问题的模型在之后的操作中可能会遇到问题，这时需要仔细阅读警告提示的内容，然后单击 Dismiss 按钮。如果出现了警告，则需要对导入的模型进行修复。执行 Tools→Geometry Edit 命令，弹出 Geometry Edit（几何修复工具）对话框，如图 2-8 所示，在 Category（种类）选项中选择需要修复的区域，系统有三个选项可以选择，分别是 Edge（边）、Face（面）、Part（部件），此处选择 Part。
+图 2-8 「几何修复工具」对话框Tool 选项与 Category 对应，用于选择几何修复的工具。本例中选择 Convert to precise（转换为精确模型）。单击 Convert to precise 后弹出一个对话框，如图 2-9 所示，再单击 OK 按钮进行几何修复。几何修复工具还可以在工具区调用，用鼠标左键按住工具区中的 Stitch（缝合）工具，展开工具条，单击右侧的 Convert to precise（转换为精确模型）工具，即可进行几何修复。
+图 2-9 警告对话框几何修复结束后，可以查看模型。具体操作：单击工具栏中的 Query information（询问信息）工具，弹出 Query 对话框，如图 2-10 所示。
+图 2-10 Query 对话框在 Part Module Queries（部件模块询问）中选择 Geometry diagnostics（几何诊断），单击 OK 按钮，弹出 Geometry Diagnostics 对话框，如图 2-11 所示。勾选 Geometry 下的 Imprecise entities 复选框，单击 Highlight 按钮，视图区的模型中以高亮度显示出不精确的部分，如果没有高亮度区，表示该模型已没有不精确的部分。读者可以自行练习 Geometry Diagnostics 对话框中的其他选项。
+图 2-11 Geometry Diagnostics 对话框
+提示Query information（询问信息）是非常有用的工具，可以对模型的各种信息进行查询。只有 Job 模块没有该工具；除了 Step 和 Load 模块只有 General Queries（一般询问）外，各功能模块都同时包含 General Queries（一般询问）和各自的 Module Queries（模块询问）。读者也可以自行练习。2．模型的修改在创建或导入一个 Part 后，可以使用如图 2-12 所示的工具对此 Part 作一定的修改，实现添加或者切除模型的一部分，以及倒角等功能。
+图 2-12 模型修改工具条
 
 
 
+
+
+## Day 50 流线、迹线和示踪线
+
+流体力学中的流线、迹线和示踪线是描述流场的场线。只有当流场为非稳定状态时，三种场线的形态才会有所区别。反之，对于稳态流场，三种线是相互重合的。
+
+- [x] 流线(Streamlines)：沿着流场质点速度矢量相切的方向形成的连线。所以流线上任意一点切线的方向，就代表了当地流体质点的速度方向。流线的稀疏的地方，流场速度小，流线密集的地方，流场的速度大。而且，每一条流线上的速度和压力的关系，都满足伯努利方程。
+
+- [x] 迹线(Pathlines)：流体质点空间位置在时间历程上形成的轨迹。所以迹线实际上描述的是流场信息在一个时间段内的结果。它记录了不同时刻下跟踪质点空间位置的变化。
+
+- [x] 示踪线（Streaklines）：也有人称之为烟线，定义是所有经过过同一位置的流体质点，在某一时刻下形成的连线。注意是经过过，不是打错字了；他的英文原意是：The loci of points of all the fluid particles that havepassed continuously through a particular spatial point in the past;我们可以这样理解，如果我们在流场中某个点，不断的释放不考虑质量的烟雾或者墨水，那么这些在同一位置点冒出的烟雾和墨水在某一时刻时形成的线，就叫做示踪线。
