@@ -243,3 +243,77 @@ ABAQUS 的 MOLDFLOW 接口是 ABAQUS/Explicit 和 ABAQUS/Standard 的交互产�
 - [x] 迹线(Pathlines)：流体质点空间位置在时间历程上形成的轨迹。所以迹线实际上描述的是流场信息在一个时间段内的结果。它记录了不同时刻下跟踪质点空间位置的变化。
 
 - [x] 示踪线（Streaklines）：也有人称之为烟线，定义是所有经过过同一位置的流体质点，在某一时刻下形成的连线。注意是经过过，不是打错字了；他的英文原意是：The loci of points of all the fluid particles that havepassed continuously through a particular spatial point in the past;我们可以这样理解，如果我们在流场中某个点，不断的释放不考虑质量的烟雾或者墨水，那么这些在同一位置点冒出的烟雾和墨水在某一时刻时形成的线，就叫做示踪线。
+
+
+## Day 51 Abaqus 特性模块（Property）（1）
+
+在 Module（模块）列表中选择 Property（特性），即进入 Property（特性）功能模块，在此模块中可以进行材料和截面特性的设置，以及弹簧、阻尼器和实体表面壳的定义等。进入功能模块后发现主菜单有所变化，如图 2-13 所示，同时工具区转变成与设置材料和截面特性相对应的工具，如图 2-14 所示。
+
+图 2-13 特性模块的菜单
+图 2-14 特性模块的工具区
+
+- [x] 定义材料属性
+
+执行 Material→Create 命令，或单击工具区中的 Create Material（创建材料）工具，如图 2-14 所示，弹出 Edit Material（编辑材料）对话框，如图 2-15 所示。对话框包括三个部分。
+图 2-15 Edit Material 对话框
+
+1. Name（名称）：用于为材料参数命名。
+2. Data field（数据区）：出现在 Material Behaviors 的下方，在该区域内设置相应的材料属性值。
+3. Material Behaviors（材料性质）：用于选择材料类型。Material Behaviors（材料性质）选择的材料会依次列到下拉菜单的上部。其中包含四个菜单，下面分别对四个菜单项进行介绍。
+
+（1）General：通用特性，如表 2-5 所示。
+表 2-5 General 菜单（2）Mechanical：力学特性，如表 2-6 所示。
+表 2-6 Mechanical 菜单（3）Thermal：热学特性，如表 2-7 所示。
+表 2-7 Thermal 菜单（4）Other：其他特性，如表 2-8 所示。
+表 2-8 Other 菜单
+
+注意关于各种类型的材料属性的详细介绍请参阅系统帮助文件《ABAQUS/CAE User's Manual》和《ABAQUS Analysis User's Manual》。
+
+
+- [x]  创建和分配截面特性ABAQUS/CAE 不能直接把材料属性赋予模型，而是先创建包含材料属性的截面特性，再将截面特性分配给模型的各区域。
+
+1．创建截面特性单击工具区中的 Create Section（创建截面）工具，弹出 Create Section 对话框，如图 2-16 所示。该对话框包括两部分。
+图 2-16 Create Section 对话框
+
+✧ Name（名称）：定义截面的名称。
+✧ Category（种类）和 Type（类型）：配合起来指定截面的类型。
+
+（1）Solid（实体）：用于定义实体的截面特性，包括 Homogeneous（均匀体）和 Generalized plane strain（一般平面应变）、Composite（复合的）等，Homogeneous 用于定义二维、三维和轴对称实体的截面特性，Generalized plane strain 用于定义二维平面实体的截面特性。
+
+（2）Shell（壳）：用于定义壳体的截面特性，对应 5 个子选项：Homogeneous（均匀的）、Composite（复合的）、Membrane（膜）、Surface（表面）、General Shell Stiffness（广义壳刚度），其中，Surface 类似于膜，但厚度为零。
+
+（3）Beam（梁）：用于定义梁的截面特性，包括 Beam（梁）和 Truss（桁架）。在创建梁的截面特性前，用户需要先定义梁的横截面的形状和尺寸。
+
+（4）Fluid（流体）：用于定义流体截面性质。
+
+（5）Other（其他）：ABAQUS/CAE 还提供垫圈（Gasket）、黏合层（Cohesive）、声媒介（Acoustic infinite）、声—固耦合（Acoustic interface）的截面特性。
+
+2．分配截面特性创建了截面特性后，就要将它分配给模型。首先，在环境栏的 Part 列表中选择要赋予截面特性的部件，如图 2-17 所示。
+
+
+图 2-17 在环境栏的 Part 列表中选择部件
+
+然后单击工具区中的 Assign Section（分配截面）工具，或执行 Assign→Section 命令，按提示在视图区选择要赋予此截面特性的部分，单击提示区的 Done 按钮，弹出 Edit Section Assignment（编辑截面分配）对话框，如图 2-18 所示。该对话框包括以下几项。
+
+图 2-18 Edit Section Assignment 对话框
+
+✧ Create（创建）：当需要分配的截面没有定义时，单击 Create…按钮创建截面。
+
+✧ Section（截面）：用于选择已建立的截面特性，仅列出了与选择区域对应的截面特性。选定后，列表下部会显示出该截面的类型和材料。
+
+✧ Shell Offset（壳偏置）：仅适用于截面类型为 Shell（壳）时，用于设置壳的偏置。这里需要给出 Cell 的概念，Cell 是 ABAQUS/CAE 中能单独赋予材料和截面属性的最小单元。在建立模型时，可以根据需要选择在基础模型上增加的部分是否是一个 Cell。如果在准备分配截面特性时，发现需要单独分配截面特性的部分没有分离出来，可以选用工具区中适当的 Partition（分割）工具进行部件的分割，如图 2-19 所示。
+图 2-19 工具区中的 Partition 工具栏
+
+提示Partition（分割）工具的功能详见系统帮助文件《ABAQUS/CAE User『 s Manual》。单击工具区的 Section Assignment Manager（截面分配管理器）工具，该管理器中显示已分配的截面列表。
+
+2.2.3 设置梁的截面特性和方向ABAQUS 还可以在 Property 模块中定义梁的截面特性、截面方向和切向方向。1．设置梁的截面特性梁的截面特性的设置方法与其他截面类型有所差异，主要体现在以下几个方面。✧ 在创建梁的截面特性前，需要首先定义梁的横截面的形状和尺寸。✧ 当选择在分析前提供截面特性时，材料属性在 Edit Beam Section（编辑梁截面）对话框中定义，不需要通过 Create Material 工具创建材料。2．梁的截面方向和切向方向的设置在分析前，还需要定义梁的截面方向，方法如下。执行 Assign→Beam Section Orientation 命令，或单击工具区的 Assigning Beam Orientation 工具，在视图区选择要定义截面方向的梁，单击鼠标中键，在提示区中输入梁截面的局部坐标的 1 方向，如图 2-20 所示，按 Enter 键，再单击提示区的 OK 按钮，完成梁截面方向的设置。
+图 2-20 提示输入梁截面的局部坐标的 1 方向当部件由 Wire（线）组成时，ABAQUS 会默认其切向方向，但可以改变此默认的切向方向。方法：在主菜单上选择 Assign→Tangent，或单击工具，在展开的工具条中选择 Assigning Beam/Truss Tangent 工具，在视图区选择要改变切向方向的梁，单击提示区的 Done 按钮，梁的切向方向即变为反方向。此时，梁截面的局部坐标的 2 方向也变为反方向。
+注意梁截面的局部坐标的 1 方向、2 方向和梁的切向方向满足右手法则。2.2.4 Special 菜单的功能Property 模块除了能设置材料和截面属性外，还可以通过 Special 菜单进行一些特殊的操作，下面对这些功能进行简单地介绍。1．Inertia（惯量）根据需要可以定义各种惯量，执行 Special→Inertia→Create 命令，弹出 Create Inertia 对话框，如图 2-21 所示，在 Name 栏中输入名称，在 Type 栏中可以选择 Point mass/inertia（点质量和转动惯量）、Heat capacitance（热容）、Nonstructural mass（非结构质量），单击 Continue…按钮，在视图区选择对象进行相应惯量的设置。
+图 2-21 Create Inertia 对话框
+提示惯量的设置详见系统帮助文件《ABAQUS/CAE User's Manual》。
+
+2．Skin（皮肤）在 Property 功能模块中，用户可以在实体模型的面或轴对称模型的边附上一层 Skin（皮肤），适用于几何部件和网格部件。
+提示在创建 Skin 之前，需要定义材料和截面属性。Skin 的材料可以不同于其他部件的材料。Skin 的截面类型可以是均匀壳截面（Homogeneous）、膜（Membrane）、复合壳截面（Composite）、表面（Surface）和垫圈（Gasket）。单击 Special→Skin→Create 命令创建 Skin，详见系统帮助文件《ABAQUS/CAE User's Manual》。一般情况下，不方便直接从模型中选取 Skin，这时可以使用 Set（集合）工具，方法为执行 Tools→Set→Create 命令，在弹出的 Create Set 对话框中输入 name，单击 Continue…按钮，在视图区中选择 Skin 作为构成集合的元素，单击提示区的 Done 按钮，完成集合的定义。单击工具栏的 Create Display Group（创建显示组）工具，在 Item 栏中选择 Sets，在其右侧的区域内选择包含 Skin 的集合，如图 2-22 所示。单击对话框下端的 Intersect（相交）按钮，视图区即显示用户定义的 Skin。
+图 2-22 用 Create Display Group 对话框选择包含 Skin 的集合
+注意Skin 不能重叠，仅一个 Skin 能定义在部件的一个指定表面。对于实体和轴对称部件，在 Mesh 功能模块中对部件进行网格划分时，ABAQUS 会自动对位于表面的 Skin 划分对应的网格，而不用单独对 Skin 进行网格划分。3．Springs/Dashpots（弹簧/阻尼器）ABAQUS 可以定义各种惯量，单击 Special→Springs/Dashpots→Create 命令，弹出 Create Springs/Dashpots 对话框，在 Name 栏中输入名称，在 Connectivity Type 栏中可以选择 Connect two points（连接两点）和 Connect points to ground（连接点和地面），后者仅适用于 ABAQUS/Standard，单击 Continue…按钮，在视图区选择对象进行相应的设置，使用时可以同时设置弹簧的刚度和阻尼器系数。
+提示相关内容可参考系统帮助文件《ABAQUS/CAE User's Manual》及《ABAQUS Analysis User's Manual》。
