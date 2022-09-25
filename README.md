@@ -79,3 +79,4 @@ To learn CAE product in 365 days
 | Day 49     | [Abaqus 部件模块（Part）和草图模块（Sketch）](./weeks/week8.md)                      | 
 | Day 50     | [流线、迹线和示踪线](./weeks/week8.md)                                              | 
 | Day 51     | [Abaqus 特性模块（Property）1](./weeks/week8.md)                                    | 
+| Day 51     | [Abaqus 特性模块（Property）2](./weeks/week8.md)                                    | 
