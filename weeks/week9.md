@@ -114,7 +114,7 @@ ABAQUS/CAE 还提供以阵列方式复制部件实体，包括线性阵列和辐
 类似于平移工具，有两种方法确定部件实体的旋转轴。之后，在提示区输入旋转的角度，如图 2-26 所示。范围为-360°～360°，正值表示逆时针方向的旋转，默认为 90°。
 
 
-图 2-26 提示输入旋转的角度
+<img width="430" alt="image" src="https://user-images.githubusercontent.com/43568675/192454942-202d248c-c835-4256-ac17-c89f76bdad76.png">
 
 输入角度后按 Enter 键，视图区显示出实体旋转后的位置，单击 OK 按钮，完成部件实体的旋转。
 
@@ -128,13 +128,12 @@ ABAQUS/CAE 还提供以阵列方式复制部件实体，包括线性阵列和辐
 
 类似于平移工具，选取平移矢量的起止点。之后，需要在提示区输入移动后两实体的间隙距离，如图 2-27 所示。负值表示两实体的重叠距离，默认为 0.0，即选取的两实体的面或边接触在一起，单击 Preview 按钮预览，再单击 Done 按钮确认本次操作。
 
-
-图 2-27 提示输入两实体的间隙距离
+<img width="443" alt="image" src="https://user-images.githubusercontent.com/43568675/192455000-3f7dff56-4c4d-4dee-88c2-4e5e49fcaa55.png">
 
 如果沿平移矢量的方向，选取的两实体的面或边不能接触在一起，该平移操作将无法进行，并弹出错误提示信息，如图 2-28 所示。
 
 
-图 2-28 错误提示信息
+<img width="330" alt="image" src="https://user-images.githubusercontent.com/43568675/192455030-a7b44fcb-4fad-4c5f-bbee-4d337009902f.png">
 
 注意
 
@@ -168,8 +167,7 @@ ABAQUS/CAE 提供了一系列约束定位工具，包括在 Constraint 菜单和
 
 约束定位工具的操作结果不能进行预览，但可以选择模型树的 Assembly→Position Constraints 命令，将鼠标指向需要修改的操作，单击鼠标右键，在弹出的命令菜单中单击 Edit 按钮，弹出 Edit Feature（编辑特征）对话框，如图 2-29 所示，即可在该对话框中对该约束定位操作进行修改。
 
-
-图 2-29 Parallel Face 对话框
+<img width="337" alt="image" src="https://user-images.githubusercontent.com/43568675/192459008-0e6ccee8-4e4a-4b18-8c02-f7546e259282.png">
 
 此外，弹出的命令菜单中的 Delete 命令用于删除该约束定位操作，Suppress 和 Resume 命令用于抑制和恢复该约束定位操作。单独的约束定位操作很难对部件实体进行精确定位，往往需要几个约束定位操作的配合才能精确地定位部件实体。
 
@@ -180,8 +178,7 @@ ABAQUS/CAE 提供了一系列约束定位工具，包括在 Constraint 菜单和
 
 具体操作：执行 Instance→Merge/Cut 命令，或单击工具区中的 Merge/Cut Instances（合并/剪切实体）工具，弹出 Merge/Cut Instances 对话框，如图 2-30 所示。
 
-
-图 2-30 Merge/Cut Instances 对话框
+<img width="596" alt="image" src="https://user-images.githubusercontent.com/43568675/192459068-bea61e15-8883-4843-94bc-8280cbde996d.png">
 
 该对话框的参数：Part name（部件名称）栏用于输入新生成的部件的名称；Operations（操作）栏用于选择操作的类型。
 
