@@ -216,3 +216,320 @@ ABAQUS/CAE 提供了一系列约束定位工具，包括在 Constraint 菜单和
 
 若对类型相同的几何部件实体（Dependent 或 Independent）进行合并或剪切操作，则生成同类的实体；若几何部件实体的类型不同，则生成非独立的实体（Dependent）。当对带有网格的实体进行合并或剪切操作时，总是生成非独立的实体（Dependent）。
 
+
+
+
+## Day 54 分析步模块 1
+任何几何模型都可在前面介绍的这四个功能模块中创建。Part 模块和 Sketch 模块用于创建部件，Assembly 模块用于组装模型的各部件。
+
+有时，需要将 Part 模块和 Assembly 模块配合起来使用，如通过 Assembly 模块中的合并（Merge）和剪切（Cut）功能创建出新的部件，再进行装配。对装配件中所包含的部件的所有操作都完成后，就可以进入 Step 模块，进行分析步和输出的定义。
+
+- [x] 设置分析步
+进入 Step 功能模块后，主菜单中的 Step 菜单及工具区中的 Create Step（创建分析步）工具和 Step Manager（步骤管理器）工具用于分析步的创建和管理。
+
+创建一个模型数据库后，ABAQUS/CAE 默认创建初始步（Initial），位于所有分析步之前。用户可以在初始步中设置边界条件和相互作用，使之在整个分析中起作用，但不能编辑、替换、重命名和删除初始步。
+
+ABAQUS 可以在初始步后创建一个或多个分析步，执行 Step→Create 命令，或单击工具区中的 Create Step（创建分析步）工具，弹出 Create Step 对话框，如图 2-31 所示。
+
+
+图 2-31 Greate Step 对话框
+
+该对话框包括三部分。
+
+（1）在 Name（名称）栏内输入分析步的名称，默认为 Step-n（n 表示第 n 个创建的分析步）。
+
+（2）Insert new step after 栏用于设置创建的分析步的位置，每个新建立的分析步都可以设置在 Initial（初始步）后的任何位置。
+
+（3）Procedure type（分析步类型）栏用于选择分析步的类型。用户需要首先选择 General（通用分析步）或 Linear perturbation（线性摄动分析步），其下部列表中显示出所有可供选择的分析步类型，默认为 General（通用分析步）中的 Static、General（静态分析）。
+
+✧ General（通用分析步）：用于设置一个通用分析步（General analysis steps），可用于线性分析和非线性分析。该分析步定义了一个连续的事件，即前一个通用分析步的结束是后一个通用分析步的开始。ABAQUS 包括 13 种通用分析步，如表 2-9 所示。
+
+表 2-9 通用分析步
+
+
+✧ Linear perturbation（线性摄动分析步）：用于设置一个线性摄动分析步（Linear perturbation analysis steps），仅适用于 ABAQUS/Standard 中的线性分析。ABAQUS 包括 10 种线性摄动分析步，如表 2-10 所示。
+
+表 2-10 线性摄动分析步
+
+
+选择分析类型后，单击 Continue…按钮，弹出 Edit Step（编辑分析步）对话框。对于不同类型的分析步，该对话框的选项有所差异。下面就几种常用的分析步进行介绍。
+
+1．Static General（静力学分析）分析步
+
+该分析步用于分析线性或非线性静力学问题，其 Edit Step 对话框包括 Basic、Incrementation 和 Other 三个选项卡页面。
+
+（1）Basic（基础）选项卡，该页面主要用于设置分析步的时间和大变形等，如图 2-32 所示。
+
+
+图 2-32 编辑分析步的 Basic 选项卡页面
+
+✧ Description（描述）：用于输入对该分析步的简单描述，该描述保存在结果数据库中，进入 Visualization 模块后显示在状态区。该栏非必选项，用户可以不对分析步进行描述。
+
+✧ Time period（时间）：用于输入该分析步的时间，系统默认值为 1。对于一般的静力学问题，可以采用默认值。
+
+✧ Nlgeom：用于选择该分析步是否考虑几何非线性，对于 ABAQUS/Standard 该选项默认为 Off（关闭）。
+
+✧ Use stabilization with：该选项用于局部不稳定的问题（如表面褶皱、局部屈曲），ABAQUS/Standard 会施加阻尼来使该问题变得稳定。
+
+✧ Include adiabatic heating effects：用于绝热的应力分析，如高速加工过程。
+
+（2）Incrementation（增量）选项卡页面，该页面用于设置增量步，如图 2-33 所示。
+
+
+图 2-33 编辑分析步的 Incrementation 选项卡页面
+
+✧ Type（类型）：该选项用于选择时间增量的控制方法，包括两种方式：Automatic（自动的）为默认选项，ABAQUS/Standard 根据计算效率来选择时间增量。
+
+提示
+
+建议读者采用这种方式。Fixed（固定的）选项，ABAQUS/Standard 采用设置的固定的时间增量进行运算。在确保所设的时间增量能够收敛的情况下，可以选择该选项。
+
+✧ Maximum number of increments（增量步的最大数目）：该栏用于设置该分析步的增量步数目的上限，默认值为 100。即使没有完成分析，当增量步的数目达到该值时，分析停止。
+
+✧ Increment size（时间增量大小）：该栏用于设置时间增量的大小。当选择 Automatic 时，用户可以设置 Initial（初始时间增量）、Minimum（最小的时间增量）和 Maximum（最大的时间增量），默认值分别为 l、1×10−5和 1。当选择 Fixed 时，只能设置时间增量的大小。
+
+（3）Other（其他）选项卡页面，该页面用于选择求解器、求解技巧、载荷随时间的变化等，如图 2-34 所示。
+
+
+图 2-34 编辑分析步的 Other 选项卡页面
+
+✧ Equation Solver（求解器）：用于选择求解器和矩阵存储方式，如表 2-11 所示。
+
+表 2-11 Equation Solver 选项
+
+
+✧ Solution Technique（求解技巧）：用于选择非线性平衡方程组的求解技巧，如表 2-12 所示。
+
+表 2-12 Solution Technique 选项
+
+
+表 2-13 Convert severe discontinuity iterations 选项
+
+
+✧ Convert severe discontinuity iterations：用于选择非线性分析中高度不连续迭代的处理方法，如表 2-13 所示。
+
+✧ Default load variation with time：用于选择载荷随时间的改变方式，如表 2-14 所示。
+
+表 2-14 Default load variation with time 选项
+
+
+✧ Extrapolation of previous state at start of each increment：用于选择每个增量步开始时的外推方法，ABAQUS/Standard 采用外推法加速非线性分析的收敛，如表 2-15 所示。
+
+表 2-15 Extrapolation of previous state at start of each increment 选项
+
+
+✧ Stop when region is fully plastic：若指定区域内所有计算点的解答是完全塑性的，该分析步结束。
+
+✧ Obtain long-term solution with time-domain material properties：适用于黏弹性或黏塑性材料。
+
+✧ Accept solution after reaching maximum number of iterations：当在 Incrementation 选项卡页面中选择 Fixed 时间增量时，该选项可以被选择。若选择该选项，当增量步达到设置的上限数目时，ABAQUS/Standard 接受此时的解答。建议不选择此选项。
+
+2．Dynamic，Implicit（隐式动力学分析）分析步
+
+该分析卡用于分析线性或非线性隐式动力学分析问题，其 Edit Step 对话框也包括 Basic、Incrementation 和 Other 三个选项卡页面，其中很多选项与静力学分析时相同，此处仅介绍不同的选项。
+
+在 Incrementation（增量）页面中，当选择自动时间增量（Automatic）时，可以设置 Half-step residual tolerance（增量步中的平衡残余误差的容差）；当选择固定时间增量（Fixed）时，可以选择 Suppress half-step residual calculation 来加快收敛。Other（其他）选项卡页面的参数说明如下。
+
+（1）Solution Technique（求解技巧）中不包括 Contact iterations（接触迭代方法）。
+
+（2）Numerical damping control parameter（数值阻尼控制参数）：该栏用于输入数值阻尼控制参数，范围为 0～-0.333（阻尼），默认值为-0.05。
+
+（3）Default load variation with time 的默认选项为 Instantaneous（瞬间加载）。
+
+（4）By pass calculations of initial accelerations at the beginning of step：适用于分析步开始时载荷不突然变化的情况，ABAQUS/Standard 在分析步开始时不计算初始加速度。若前一个分析步也是动力学分析步，采用前一个分析步结束时的加速度作为新的分析步的加速度。若当前分析步是第一个动力学分析步，加速度为 0；在默认情况下，ABAQUS/Standard 计算初始加速度。
+
+3．Dynamic，Explicit（显式动力学分析）分析步
+
+该分析步用于显式动力学分析，除 Basic、Incrementation 和 Other 三个选项卡页面外，Edit Step 对话框中还包括一个 Mass scaling 选项卡页面。
+
+Basic（基础）选项卡页面中的 Nlgeom 选项默认为 On（开）。Incrementation（增量）选项卡页面的相关参数如表 2-16 所示。
+
+表 2-16 Incrementation 选项卡
+
+
+（1）Mass scaling（质量缩放）选项卡页面用于质量缩放的定义。当模型的某些区域包含控制稳定极限的很小的单元时，ABAQUS/Explicit 采用质量缩放功能来增加稳定极限，提高分析效率。
+
+✧ 「Use scaled mass andthroughout step」definitions from the previous step：为默认选项，程序采用前一个分析步对质量缩放的定义。
+
+✧ Use scaling definitions below：用于创建一个或多个质量缩放定义。单击该对话框下部的 Create…按钮，弹出 Edit Mass Scaling 对话框，如图 2-35 所示，在该对话框内选择质量缩放的类型并进行相应的设置。
+
+
+图 2-35 Edit Mass Scaling 对话框
+
+设置完成后，Edit Step 对话框的 Data 列表内将显示出该质量缩放的设置，用户可以单击该对话框下部的 Edit…或 Delete 按钮进行质量缩放定义的编辑或删除，如图 2-36 所示。
+
+
+图 2-36 设置质量缩放后的 Edit Step 对话框
+
+说明
+
+这里不详细讲解 Edit Mass Scaling 对话框的使用，请参阅系统帮助文件《ABAQUS/CAE User's Manual》。
+
+（2）Other（其他）选项卡页面，不同于 Static，General 和 Dynamic，Implicit 的情况，该页面仅包含 Linear bulk viscosity parameter 和 Quadratic bulk viscosity parameter 两栏，如图 2-37 所示。
+
+
+图 2-37 Edit Step 对话框中的 Other 标签栏图
+
+Linear bulk viscosity parameter：用于输入线性体积黏度参数，默认值为 0.06，ABAQUS/Explicit 默认使用该类参数。
+
+Quadratic bulk viscosity parameter：用于输入二次体积黏度参数，默认值为 1.2，仅适用于连续实体单元和压容积应变率时。
+
+4．Static，Linear perturbation（线性摄动静力学分析）分析步
+
+该分析步用于线性静力学分析，其 Edit Step 对话框仅包含 Basic 和 Other 两个选项卡页面，如图 2-38 所示，且选项为 Static，General 的子集。
+
+
+图 2-38 线性摄动静力学分析中的 Edit Step 对话框
+
+（1）Basic（基础）选项卡页面：仅包含 Description（描述）栏。Nlgeom 为 Off（关闭），即不涉及几何非线性问题。
+
+（2）Other（其他）选项卡页面：仅包含 Equation Solver（求解器）栏。
+
+设置完 Edit Step 对话框后，单击 OK 按钮，完成分析步的创建。此时单击工具区 Step Manager（步骤管理器）工具，可见步骤管理器内列出了初始步和已创建的分析步，可以对列出的分析步进行编辑、替换、重命名、删除操作和几何非线性的选择，如图 2-39 所示。另外，环境栏的 Step 列表中也列出了初始步和已创建的分析步。
+
+
+图 2-39 步骤管理器
+
+这里只介绍这四种常用的分析步，读者若想了解其他分析步的设置，请参阅系统帮助文件《ABAQUS/CAE User's Manual》和《ABAQUS Analysis User's Manual》。
+
+注意
+
+ABAQUS 对分析步的数量没有限制，但严格限制其排列顺序。当继续创建分析步时，Create Step 对话框的分析步列表自动更新，仅列出可以选用的分析步。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- [x] 定义输出
+用户可以设置写入输出数据库的变量，包括场变量（以较低的频率将整个模型或模型的大部分区域的结果写入输出数据库）和历史变量（以较高的频率将模型的小部分区域的结果写入输出数据库）。
+
+1．变量输出要求管理器
+
+创建了分析步后，ABAQUS/CAE 会自动创建默认的场变量输出要求和历史变量输出要求（线性摄动分析步中的 Buckle、Frequency.Complex Frequency 无历史变量输出）。
+
+单击工具区中 Field Output Manager（场变量输出要求管理器）工具和 Field History Manager（历史变量输出要求管理器）工具，分别弹出场变量输出要求管理器和历史变量输出要求管理器，图 2-40 所示为创建如图 2-39 所示的分析步后的场变量输出要求管理器和历史变量输出要求管理器。
+
+
+图 2-40 输出要求管理器
+
+提示
+
+这两个管理器的布局完全相同，下面只介绍场变量输出要求管理器，历史变量输出要求管理器的使用与之相同。
+
+ABAQUS 可以在场变量输出要求管理器中进行场变量输出要求的创建、重命名、复制、删除、编辑。此外，列表最左侧的表示该场变量输出要求被激活，单击此图标则变为，表示该场变量输出要求被抑制。
+
+提示
+
+这些功能也可以执行 Output→Field Output Requests 和 Output→History Output Requests 命令。
+
+已创建的通用分析步的场变量输出要求，在之后所有的通用分析步中继续起作用，在管理器中显示为 Propagated，如图 2-40（a）所示。
+
+单击管理器中 Step-3 下的 Propagated，右侧的 Deactivate 变为可选按钮，单击该按钮，Propagated 变为 Inactive，表明 Step-1 创建的场变量输出要求在 Step-3 中不起作用。此时 Activate 变为可选按钮，可用于激活 Step-3 的场变量输出要求。该功能同样适用于线性摄动分析步，但必须是同一种线性摄动分析步的场变量输出要求。
+
+提示
+
+若在所有通用分析步前创建一个通用分析步，则 ABAQUS/CAE 不会自动创建一个默认的场变量输出要求。此时可以使用 Move Left 和 Move Right 来控制场变量输出要求起作用的范围，也可以创建一个新的场变量输出要求。该功能同样适用于线性摄动分析步，但必须是同一种线性摄动分析步的场变量输出要求。
+
+注意
+
+如果有的分析步不包含场变量输出要求，ABAQUS/CAE 在生成 inp 文件时会出现警告。
+
+2．编辑输出要求
+
+单击场变量输出要求管理器或历史变量输出要求管理器中的 Edit…按钮，弹出 Edit Field Output Request 或 Edit History Output Request 对话框，如图 2-41 所示，就可以对场变量输出要求/历史变量输出要求进行修改。
+
+
+图 2-41 编辑变量输出要求
+
+1）编辑场变量输出要求
+
+在 Edit Field Output Request 对话框中，用户可以对场变量输出要求进行设置。不同分析步的选项可能不完全相同，下面以 Static，General 分析步为例进行介绍。
+
+✧ Domain（范围）：该列表用于选择输出变量的区域，如表 2-17 所示。
+
+表 2-17 Domain 选项
+
+
+✧ Frequency（频率）：该栏用于设置输出变量的频率，如表 2-18 所示。
+
+表 2-18 Frequency 选项
+
+
+✧ Timing：当在 Frequency 列表中选择 Every x units of time、Evenly spaced time intervals 或 From time points 时，该列表为可选，包括 Output at exact times（在精确时间输出）和 Output at approximate times（在近似的时间输出）。
+
+✧ Output Variables（输出变量）：用于选择写入输出数据库的场变量，可通过几种方式进行选择：Select from list below（从列表中选择）、All（全选）、Preselected defaults（默认选择）、Edit variables（编辑变量名称）。输出变量列表与输出变量的区域选择相对应。这是需要重点选择的部分，写入输出数据库的场变量越多，输出数据库占的计算机空间也相应地增大，所以用户应该根据需要选择输出变量。
+
+✧ Output for rebar：用于选择写入输出数据库的场变量中是否包括钢筋的结果，Domain 中为 Whole model 或 Set 时被激活。
+
+✧ Output at shell，beam，and layered section points：用于设置写入输出数据库的场变量的截面点，Domain 中为 Whole model 或 Set 时被激活。
+
+✧ Include local coordinate directions when available：不选择该项可以减小输出数据库，默认为选择该项。
+
+完成设置后，单击 OK 按钮。
+
+2）编辑历史变量输出要求
+
+Edit History Output Request 对话框与 Edit Field Output Request 对话框基本相同，现就其不同之处进行介绍（仍以 Static，General 分析步为例）。
+
+✧ Domain（范围）中增加了 Springs/Dashpots（将指定的弹簧/阻尼器的场变量写入输出数据库）和 Contour integral（将指定的围线积分中的场变量写入输出数据库）。
+
+✧ 不包含 Include local coordinate directions when available 选项。
+
+2.4.3 Step 模块的其他功能
+Step 模块除了能够设置分析步和定义输出变量外，还能通过 Output 菜单和 Other 菜单进行其他操作，下面简单进行介绍。
+
+1．ALE 自适应网格
+
+ALE 自适应网格适用于静力学分析（Static，General）、热—力耦合分析（Coupled temp-displacement）、显式动力学分析（Dynamic，Explicit）、显式动态温度—位移耦合分析（Dynamic，Temp-disp，Explicit）、土壤力学分析（Soils）。
+
+ALE 自适应网格（ALE adaptive meshing）是任意拉格朗日—欧拉（Arbitrary Lagrangian-Eulerian）分析，它综合了拉格朗日分析和欧拉分析的特征，在整个分析中保持高质量的网格而不改变网格的拓扑结构。
+
+主菜单中的 Other 下有三个子菜单用于 ALE 自适应网格。
+
+（1）Other→ALE Adaptive Mesh Domain 菜单用于指定模型中 ALE 自适应网格的区域，一个分析步只能指定一个区域。
+
+（2）Other→ALE Adaptive Mesh Constraint 菜单用于指定 ALE 自适应网格的约束。
+
+（3）Other→ALE Adaptive Mesh Controls 菜单用于指定 ALE 自适应网格的控制。
+
+若想进一步了解 ALE 自适应网格，请参阅系统帮助文件《ABAQUS/CAE User's Manual》和《ABAQUS Analysis User's Manual》。
+
+2．求解控制
+
+通过调整参数可以控制 ABAQUS 的分析，包括通用求解控制和线性方程组迭代求解器的控制。Other→General Solution Controls 菜单用于通用求解控制，仅适用于 ABAQUS/Standard 的通用分析步，用户通过调整变量来控制收敛和时间积分的精确性。
+
+提示
+
+请参阅系统帮助文件《ABAQUS/CAE User's Manual》和《ABAQUS Analysis User's Manual》。
+
+Other→Solver Controls 菜单用于线性方程组迭代求解器的控制，适用于通用静力学分析（Static，General）、线性摄动静力学分析（Static，Linear perturbation）、黏性分析（Visco）和传热分析（Heat transfer）。详见系统帮助文件《ABAQUS/CAE User's Manual》和《ABAQUS Analysis User's Manual》。
+
+注意
+
+读者要慎用通用求解控制，因为通用求解控制的默认设置适用于大多数分析，改变默认设置可能增加计算时间、产生不精确的解或导致收敛问题。
+
+3．特殊的输出
+
+在 Step 模块中，除了能设置场变量输出要求和历史变量输出要求外，还能进行特殊的输出控制，这些功能都包含在 Output 菜单中，详见系统帮助文件《ABAQUS/CAE User's Manual》。
+
+
+ABAQUS 基础入门与案例精通
+作者：张建华 丁磊编著
+扫码下载知乎APP 客户端
+
+
+
