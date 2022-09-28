@@ -231,8 +231,7 @@ ABAQUS/CAE 提供了一系列约束定位工具，包括在 Constraint 菜单和
 
 ABAQUS 可以在初始步后创建一个或多个分析步，执行 Step→Create 命令，或单击工具区中的 Create Step（创建分析步）工具，弹出 Create Step 对话框，如图 2-31 所示。
 
-
-图 2-31 Greate Step 对话框
+<img width="638" alt="image" src="https://user-images.githubusercontent.com/43568675/192687413-440e8905-4ecf-493e-aede-ba0b478edc42.png">
 
 该对话框包括三部分。
 
@@ -244,13 +243,12 @@ ABAQUS 可以在初始步后创建一个或多个分析步，执行 Step→Creat
 
 ✧ General（通用分析步）：用于设置一个通用分析步（General analysis steps），可用于线性分析和非线性分析。该分析步定义了一个连续的事件，即前一个通用分析步的结束是后一个通用分析步的开始。ABAQUS 包括 13 种通用分析步，如表 2-9 所示。
 
-表 2-9 通用分析步
+<img width="984" alt="image" src="https://user-images.githubusercontent.com/43568675/192687356-cbcbbb3b-f01e-4816-8ce3-ada022387bd7.png">
 
 
 ✧ Linear perturbation（线性摄动分析步）：用于设置一个线性摄动分析步（Linear perturbation analysis steps），仅适用于 ABAQUS/Standard 中的线性分析。ABAQUS 包括 10 种线性摄动分析步，如表 2-10 所示。
 
-表 2-10 线性摄动分析步
-
+<img width="991" alt="image" src="https://user-images.githubusercontent.com/43568675/192687467-df0a8e68-4e25-4130-bb24-605abb879eda.png">
 
 选择分析类型后，单击 Continue…按钮，弹出 Edit Step（编辑分析步）对话框。对于不同类型的分析步，该对话框的选项有所差异。下面就几种常用的分析步进行介绍。
 
@@ -260,8 +258,6 @@ ABAQUS 可以在初始步后创建一个或多个分析步，执行 Step→Creat
 
 （1）Basic（基础）选项卡，该页面主要用于设置分析步的时间和大变形等，如图 2-32 所示。
 
-
-图 2-32 编辑分析步的 Basic 选项卡页面
 
 ✧ Description（描述）：用于输入对该分析步的简单描述，该描述保存在结果数据库中，进入 Visualization 模块后显示在状态区。该栏非必选项，用户可以不对分析步进行描述。
 
@@ -275,8 +271,7 @@ ABAQUS 可以在初始步后创建一个或多个分析步，执行 Step→Creat
 
 （2）Incrementation（增量）选项卡页面，该页面用于设置增量步，如图 2-33 所示。
 
-
-图 2-33 编辑分析步的 Incrementation 选项卡页面
+<img width="832" alt="image" src="https://user-images.githubusercontent.com/43568675/192687562-fb96a23e-9bbd-4aed-a66d-b5e509e94669.png">
 
 ✧ Type（类型）：该选项用于选择时间增量的控制方法，包括两种方式：Automatic（自动的）为默认选项，ABAQUS/Standard 根据计算效率来选择时间增量。
 
@@ -290,32 +285,34 @@ ABAQUS 可以在初始步后创建一个或多个分析步，执行 Step→Creat
 
 （3）Other（其他）选项卡页面，该页面用于选择求解器、求解技巧、载荷随时间的变化等，如图 2-34 所示。
 
+<img width="567" alt="image" src="https://user-images.githubusercontent.com/43568675/192706472-d1b4294f-c877-4046-a99f-d3819e7755ec.png">
 
-图 2-34 编辑分析步的 Other 选项卡页面
 
 ✧ Equation Solver（求解器）：用于选择求解器和矩阵存储方式，如表 2-11 所示。
 
-表 2-11 Equation Solver 选项
+<img width="645" alt="image" src="https://user-images.githubusercontent.com/43568675/192706448-3a24883d-fecc-4478-a14c-ea6f1a154115.png">
 
 
 ✧ Solution Technique（求解技巧）：用于选择非线性平衡方程组的求解技巧，如表 2-12 所示。
 
-表 2-12 Solution Technique 选项
+<img width="1033" alt="image" src="https://user-images.githubusercontent.com/43568675/192688001-074b7e38-8800-464a-bbf8-ddf254283671.png">
 
 
-表 2-13 Convert severe discontinuity iterations 选项
+
 
 
 ✧ Convert severe discontinuity iterations：用于选择非线性分析中高度不连续迭代的处理方法，如表 2-13 所示。
+<img width="561" alt="image" src="https://user-images.githubusercontent.com/43568675/192706513-a157ff10-0569-484a-85fb-a0cd35d25716.png">
 
 ✧ Default load variation with time：用于选择载荷随时间的改变方式，如表 2-14 所示。
+<img width="546" alt="image" src="https://user-images.githubusercontent.com/43568675/192706556-75529c1d-3f86-4a12-a2db-4f1d0c06e18f.png">
 
-表 2-14 Default load variation with time 选项
+
 
 
 ✧ Extrapolation of previous state at start of each increment：用于选择每个增量步开始时的外推方法，ABAQUS/Standard 采用外推法加速非线性分析的收敛，如表 2-15 所示。
 
-表 2-15 Extrapolation of previous state at start of each increment 选项
+<img width="559" alt="image" src="https://user-images.githubusercontent.com/43568675/192707131-69ee8fca-1dce-4846-9ae4-3645b6cd883a.png">
 
 
 ✧ Stop when region is fully plastic：若指定区域内所有计算点的解答是完全塑性的，该分析步结束。
@@ -344,7 +341,7 @@ ABAQUS 可以在初始步后创建一个或多个分析步，执行 Step→Creat
 
 Basic（基础）选项卡页面中的 Nlgeom 选项默认为 On（开）。Incrementation（增量）选项卡页面的相关参数如表 2-16 所示。
 
-表 2-16 Incrementation 选项卡
+<img width="592" alt="image" src="https://user-images.githubusercontent.com/43568675/192707204-24681c6e-71fb-4251-9c38-503b6f953e01.png">
 
 
 （1）Mass scaling（质量缩放）选项卡页面用于质量缩放的定义。当模型的某些区域包含控制稳定极限的很小的单元时，ABAQUS/Explicit 采用质量缩放功能来增加稳定极限，提高分析效率。
@@ -353,13 +350,12 @@ Basic（基础）选项卡页面中的 Nlgeom 选项默认为 On（开）。Incr
 
 ✧ Use scaling definitions below：用于创建一个或多个质量缩放定义。单击该对话框下部的 Create…按钮，弹出 Edit Mass Scaling 对话框，如图 2-35 所示，在该对话框内选择质量缩放的类型并进行相应的设置。
 
-
-图 2-35 Edit Mass Scaling 对话框
+<img width="333" alt="image" src="https://user-images.githubusercontent.com/43568675/192707247-d3b9b52f-73e4-40a5-be57-515ee03e8fbb.png">
 
 设置完成后，Edit Step 对话框的 Data 列表内将显示出该质量缩放的设置，用户可以单击该对话框下部的 Edit…或 Delete 按钮进行质量缩放定义的编辑或删除，如图 2-36 所示。
 
 
-图 2-36 设置质量缩放后的 Edit Step 对话框
+<img width="440" alt="image" src="https://user-images.githubusercontent.com/43568675/192707295-9d7a1ae1-c0d7-4c66-9bb5-3568c07f477e.png">
 
 说明
 
@@ -368,7 +364,7 @@ Basic（基础）选项卡页面中的 Nlgeom 选项默认为 On（开）。Incr
 （2）Other（其他）选项卡页面，不同于 Static，General 和 Dynamic，Implicit 的情况，该页面仅包含 Linear bulk viscosity parameter 和 Quadratic bulk viscosity parameter 两栏，如图 2-37 所示。
 
 
-图 2-37 Edit Step 对话框中的 Other 标签栏图
+<img width="483" alt="image" src="https://user-images.githubusercontent.com/43568675/192707337-02fa916d-deb0-427c-8dc2-a91a3206d9c5.png">
 
 Linear bulk viscosity parameter：用于输入线性体积黏度参数，默认值为 0.06，ABAQUS/Explicit 默认使用该类参数。
 
@@ -379,7 +375,7 @@ Quadratic bulk viscosity parameter：用于输入二次体积黏度参数，默�
 该分析步用于线性静力学分析，其 Edit Step 对话框仅包含 Basic 和 Other 两个选项卡页面，如图 2-38 所示，且选项为 Static，General 的子集。
 
 
-图 2-38 线性摄动静力学分析中的 Edit Step 对话框
+<img width="423" alt="image" src="https://user-images.githubusercontent.com/43568675/192707372-7842e8c9-4ec8-4dfa-ba1c-2616c4ecfed8.png">
 
 （1）Basic（基础）选项卡页面：仅包含 Description（描述）栏。Nlgeom 为 Off（关闭），即不涉及几何非线性问题。
 
@@ -388,7 +384,7 @@ Quadratic bulk viscosity parameter：用于输入二次体积黏度参数，默�
 设置完 Edit Step 对话框后，单击 OK 按钮，完成分析步的创建。此时单击工具区 Step Manager（步骤管理器）工具，可见步骤管理器内列出了初始步和已创建的分析步，可以对列出的分析步进行编辑、替换、重命名、删除操作和几何非线性的选择，如图 2-39 所示。另外，环境栏的 Step 列表中也列出了初始步和已创建的分析步。
 
 
-图 2-39 步骤管理器
+<img width="480" alt="image" src="https://user-images.githubusercontent.com/43568675/192707396-62f0ce97-55ca-401e-81a1-cdf2eda9b7c8.png">
 
 这里只介绍这四种常用的分析步，读者若想了解其他分析步的设置，请参阅系统帮助文件《ABAQUS/CAE User's Manual》和《ABAQUS Analysis User's Manual》。
 
@@ -525,11 +521,4 @@ Other→Solver Controls 菜单用于线性方程组迭代求解器的控制，�
 3．特殊的输出
 
 在 Step 模块中，除了能设置场变量输出要求和历史变量输出要求外，还能进行特殊的输出控制，这些功能都包含在 Output 菜单中，详见系统帮助文件《ABAQUS/CAE User's Manual》。
-
-
-ABAQUS 基础入门与案例精通
-作者：张建华 丁磊编著
-扫码下载知乎APP 客户端
-
-
 
