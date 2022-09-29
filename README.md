@@ -83,3 +83,4 @@ To learn CAE product in 365 days
 | Day 53     | [Abaqus 装配模块（Assembly）1](./weeks/week9.md)                                    | 
 | Day 54     | [Abaqus 装配模块（Assembly）2](./weeks/week9.md)                                    | 
 | Day 55     | [Abaqus 分析步模块（STEP） 1](./weeks/week9.md)                                       | 
+| Day 56     | [Abaqus 分析步模块（STEP） 2](./weeks/week9.md)                                       | 
