@@ -395,19 +395,7 @@ ABAQUS 对分析步的数量没有限制，但严格限制其排列顺序。当�
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+## Day 55 分析步模块（STEP） 2
 
 
 - [x] 定义输出
@@ -419,8 +407,7 @@ ABAQUS 对分析步的数量没有限制，但严格限制其排列顺序。当�
 
 单击工具区中 Field Output Manager（场变量输出要求管理器）工具和 Field History Manager（历史变量输出要求管理器）工具，分别弹出场变量输出要求管理器和历史变量输出要求管理器，图 2-40 所示为创建如图 2-39 所示的分析步后的场变量输出要求管理器和历史变量输出要求管理器。
 
-
-图 2-40 输出要求管理器
+<img width="1054" alt="image" src="https://user-images.githubusercontent.com/43568675/192938918-7985e18a-47ba-4d14-a3a6-b73efa39a6fd.png">
 
 提示
 
@@ -448,8 +435,8 @@ ABAQUS 可以在场变量输出要求管理器中进行场变量输出要求的�
 
 单击场变量输出要求管理器或历史变量输出要求管理器中的 Edit…按钮，弹出 Edit Field Output Request 或 Edit History Output Request 对话框，如图 2-41 所示，就可以对场变量输出要求/历史变量输出要求进行修改。
 
+<img width="1089" alt="image" src="https://user-images.githubusercontent.com/43568675/192939293-dde6afed-de07-497b-98d1-ce09b0a84d15.png">
 
-图 2-41 编辑变量输出要求
 
 1）编辑场变量输出要求
 
@@ -457,12 +444,12 @@ ABAQUS 可以在场变量输出要求管理器中进行场变量输出要求的�
 
 ✧ Domain（范围）：该列表用于选择输出变量的区域，如表 2-17 所示。
 
-表 2-17 Domain 选项
+<img width="1112" alt="image" src="https://user-images.githubusercontent.com/43568675/192939312-12d68d78-ccc0-4dba-8641-c31d131a03b4.png">
 
 
 ✧ Frequency（频率）：该栏用于设置输出变量的频率，如表 2-18 所示。
 
-表 2-18 Frequency 选项
+<img width="1096" alt="image" src="https://user-images.githubusercontent.com/43568675/192939372-1cca5ee3-f40e-4a24-83eb-575faa56069e.png">
 
 
 ✧ Timing：当在 Frequency 列表中选择 Every x units of time、Evenly spaced time intervals 或 From time points 时，该列表为可选，包括 Output at exact times（在精确时间输出）和 Output at approximate times（在近似的时间输出）。
@@ -485,7 +472,8 @@ Edit History Output Request 对话框与 Edit Field Output Request 对话框基�
 
 ✧ 不包含 Include local coordinate directions when available 选项。
 
-2.4.3 Step 模块的其他功能
+
+- [x]  Step 模块的其他功能
 Step 模块除了能够设置分析步和定义输出变量外，还能通过 Output 菜单和 Other 菜单进行其他操作，下面简单进行介绍。
 
 1．ALE 自适应网格
