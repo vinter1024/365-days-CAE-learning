@@ -547,3 +547,287 @@ Other→Solver Controls 菜单用于线性方程组迭代求解器的控制，�
             局限性:由于对壁面距离的敏感，不太适合自由剪切流
     Reynolds Stress
         物理上是最可靠的RANS 模型，克服了涡粘模型 的各向同性假设。需要更多的CPU时间和内存， 由于方程间强耦合性，收敛稍差。适合复杂三维 流动，强旋流等，如旋流燃烧器，旋风分离器等
+
+## Day 58 载荷模块（Load）
+
+进入 Load 功能模块后，主菜单中的 Load 菜单及工具区中的 Create Load（创建载荷）工具和 Load Manager（载荷管理器）工具用于载荷的创建和管理。
+
+- [x]  定义载荷
+
+定义载荷时，执行 Load→Create 命令，或单击工具区中的 Create Load（创建载荷）工具，也可双击左侧模型树中的 Loads，弹出 Create Load 对话框，如图 2-42 所示。该对话框包括以下几项。
+
+
+![image](https://user-images.githubusercontent.com/43568675/193416118-28795202-184c-4621-aa87-cff0a28361e6.png)
+
+
+（1）Name（名称），在该栏内输入载荷的名称，默认为 Load-n（n 为第 n 个创建的
+
+（2）Step（分析步），该列表用于选择用于创建载荷的分析步。
+
+
+注意
+
+在初始步（Initial）中不能定义载荷，必须在 Step 列表中选择分析步施加相应的载荷。
+
+（3）Category（种类），用于选择适用于所选分析步的加载种类，包括 Mechanical（力学的）、Fluid（流体）、Thermal（热学的）、Acoustic（声学的）、Electrical（电学的）、Mass diffusion（质量扩散）。对于不同的分析步，可以施加不同的载荷种类。
+
+（4）Types for Selected Step，用于选择载荷的类型，是 Category 的下一级选项。
+
+✧ Mechanical：包括 Concentrated force（集中力）、Moment（力矩）、Pressure（施加在面上的压力载荷）、Surface traction（施加在面上的载荷）、Shell edge load（施加在壳边上的载荷）、Pipe pressure（管道压力）、Line load（施加在梁上的线载荷）、Body force（体力）、Gravity（重力，输入指定方向的加速度）、Generalized plane strain（广义平面应变）、Rotational body force（旋转体力），Bolt load（螺栓或扣件的预紧力）、Coriolis force（科氏力）、Connector force（施加在连接器上的集中力）、Inertia Relief（惯性释放载荷）、Connector moment（施加在连接器上的力矩），如图 2-42（a）所示。
+
+✧ Thermal：包括 Surface heat flux（表面热通量）、Body heat flux（体热通量）、Concentrated heat flux（集中热通量），如图 2-42（b）所示。
+
+✧ Acoustic：可设置 Inward volume acceleration（声媒介边界上点或节点的容积加速度），如图 2-42（c）所示。
+
+✧ Fluid：包括 Concentrated pore fluid（点或节点上的集中孔隙流速）、Surface pore fluid（垂直于表面的孔隙流速），如图 2-42（d）所示。
+
+✧ Electrical：包括压电分析中的 Concentrated charge（集中电荷）、Surface charge（面上的电荷密度）、Body charge（体上的电荷密度），如图 2-42（e）所示，热—电耦合分析中的 Surface current（面上的电流密度）、Concentrated current（集中电流）、Body current（体上的电流密度），如图 2-42（f）所示。其他的加载方式请读者参阅系统帮助文件《ABAQUS/CAE User's Manual》。
+
+1．定义 Concentrated force（集中力）
+
+如图 2-42（a）所示，选择 Concentrated force 之后，单击 Continue…按钮，选择施加集中力的几何实体上的参考点、顶点或网格实体上的节点，单击提示区的 Done 按钮，弹出 Edit Load 对话框，如图 2-43 所示。该对话框包括以下几项。
+
+
+![image](https://user-images.githubusercontent.com/43568675/193416212-cee5dcaa-11c1-4119-bd44-379674ce8650.png)
+
+（1）CSYS：用于选择载荷对应的坐标系，默认为整体坐标系（Global）。单击 Edit…按钮，选择局部坐标系。
+
+（2）CF1、CF2、CF3：分别为力在三个方向上的分量。与坐标轴正方向同向的力为正值，反之为负，不输入值则默认为 0。
+
+（3）Follow nodal rotation：用于选择集中力是否随着节点的旋转而改变。在小变形分析中可以不作选择，认为力的方向不随模型变形方向的改变而改变；而在大变形分析中应该选择该项。
+
+（4）Amplitude（幅值）：用于选择载荷随时间/频率变化的规律。
+
+✧ 对于静力学问题，默认的是 Ramp，如图 2-43（a）所示，为由 0 线性增长到给定值。
+
+✧ 对于动力学问题，默认的是 Instantaneous，如图 2-43（b）所示，为瞬时加载。
+
+若已通过 Tools→Amplitude→Create 命令定义了幅值，可以在该列表内进行选择。
+
+若没有定义幅值，可以单击 Create…按钮定义随时间变化的加载方式，如 Equally spaced（按等时间/频率间距变化的载荷）、Tabular（由表格给定的载荷与时间/频率的关系）和 Periodic（周期变化的载荷）等。
+
+输入集中力对应的坐标系三个方向上的分量的值或设置随时间变化的载荷后，单击 OK 按钮，完成集中力的施加。加载在几何顶点或参考点上的集中力会自动转换为加载在相应节点上的集中力。
+
+2．定义 Moment（力矩）
+
+如图 2-42（a）所示，在选择 Moment 之后，单击 Continue…按钮，选择施加力矩的几何实体上的参考点、顶点或网格实体上的节点，单击 Done 按钮，弹出 Edit Load 对话框，如图 2-44 所示。该对话框包括以下几项。
+
+![image](https://user-images.githubusercontent.com/43568675/193416226-93ceed18-0d3a-48d6-81fc-603c30b3bb03.png)
+
+
+（1）CSYS（坐标系）：用于选择载荷对应的坐标系，与施加集中力时的设置方法相同。
+
+（2）CM1、CM2、CM3：分别为绕三个坐标轴的力矩，力矩的正负遵守右手法则。
+
+（3）Amplitude（幅值）：用于选择载荷随时间/频率变化的规律，与施加集中力时的设置方法相同。
+
+（4）Follow nodal rotation：用于选择集中力是否随着节点的旋转而改变，与施加集中力时相同。
+
+3．定义 Pressure（单位面积上的压力）
+
+如图 2-42（a）所示，在选择 Pressure 之后，单击 Continue…按钮，选择施加压力的几何实体的表面，载荷的方向与选择的面垂直，单击提示区的 Done 按钮，弹出 Edit Load 对话框，如图 2-45 所示。
+
+![image](https://user-images.githubusercontent.com/43568675/193416308-a6d968fa-5841-40bc-aef4-bcdc54b4526a.png)
+
+
+首先需要在 Distribution（分布）列表中选择压力的分布方式，每种分布方式都有各自的设置选项，分别介绍如下。
+
+（1）Uniform，施加均匀分布的压力，如图 2-45（a）所示。
+
+✧ Magnitude：输入压力值，正值为压力，负值为拉力。
+
+✧ Amplitude：该列表用于选择载荷随时间/频率变化的规律，与施加集中力时的设置方法相同，不再赘述。
+
+（2）Hydrostatic，施加静水压力，如图 2-45（b）所示，仅适用于 ABAQUS/Standard。
+
+✧ Magnitude：输入压力值。
+
+✧ Amplitude：用于选择载荷随时间/频率变化的规律。
+
+✧ Zero pressure height：用于输入零压力处的高度。
+
+提示
+
+对于三维模型以 Z 轴方向（坐标轴 3 方向）为静水压力随高度变化方向；二维模型以 Y 轴方向（坐标轴 2 方向）为静水压力随高度变化方向。
+
+✧ Reference pressure height：用于输入参考压力值（Magnitude 栏内设定的压力值）的高度。对于三维模型以Z轴方向（坐标轴 3 方向）为静水压力随高度变化方向；二维模型以Y轴方向（坐标轴 2 方向）为静水压力随高度变化方向。
+
+（3）User-defined，使用用户子程序 DLOAD（ABAQUS/Standard）或 VDLOAD（ABAQUS/Explicit）定义压力，如图 2-45（c）所示。
+
+✧ Magnitude：如果需要可以在该栏输入压力值。在 ABAQUS/Standard 分析中，该值被输入用户子程序 DLOAD；在 ABAQUS/Explicit 分析中，该值被忽略。
+
+（4）Stagnation，施加滞止压力，如图 2-45（d）所示，仅适用于 ABAQUS/Explicit。
+
+✧ Magnitude：输入压力值。
+
+✧ Amplitude：用于选择载荷随时间/频率变化的规律。
+
+✧ Determine relative velocity from reference point：该选项用于选择是否将施加压力的面的速度减去参考点的速度。默认为不选择该选项；若用户选择该选项，需要单击 Edit...按钮选择几何模型的顶点、参考点或网格模型的节点作为参考点。
+
+（5）Viscous，施加黏性压力，如图 2-45（e）所示，仅适用于 ABAQUS/Explicit，其设置方法同滞止压力。
+
+（6）Create，该按钮用于创建分析场的表达式，创建后该分析场被列入 Distribution 列表中，可选择压力按此表达式分布。
+
+如果事先通过 Tools→Analytical Field→Create 命令定义了分析场，可以直接在 Distribution 列表内进行选择。
+
+完成载荷的设置后，单击工具区的 Load Manager（载荷管理器）工具，可见载荷管理器内列出了已创建的载荷，如图 2-46 所示。该管理器的用法不再赘述。
+
+![image](https://user-images.githubusercontent.com/43568675/193416352-34a0a5ac-f9d7-4828-ac24-dd5ef2ef1b4e.png)
+
+
+
+- [x]  定义边界条件
+
+主菜单中的 BC 菜单及工具区中 Create Boundary Condition（创建边界条件）工具和 Boundary Condition Manager（边界条件管理器）工具用于边界条件的创建和管理。
+
+定义边界条件时，或执行 BC→Create 命令，单击工具区中的，也可双击左侧模型树中的 BCs，弹出 Create Boundary Condition 对话框，如图 2-47 所示。该对话框与 Create Load 对话框类似，包括以下几个部分。
+
+![image](https://user-images.githubusercontent.com/43568675/193416485-219669b4-0003-4152-8001-e3595a6e77ee.png)
+
+（1）Name（名称），在该栏内输入边界条件的名称，默认为 BC-n（n 为第n个创建的边界条件）。
+
+（2）Step（分析步），在该列表内选择用于创建边界条件的步骤，包括初始步和分析步。
+
+（3）Category（种类），用于选择适用于所选步骤的边界条件种类，包括 Mechanical（力学的）和 Other（其他）。
+
+（4）Types for Selected Step，用于选择边界条件的类型，是 Category 的下一级选项。对于不同的分析步，可以施加不同的边界条件类型。
+
+✧ Mechanical：包括 Symmetry/Antisymmetry/Encastre（对称/反对称/端部固定）、Displacement/Rotation（位移/旋转）、Acceleration/Angular acceleration（加速度/角加速度）、Velocity/Angular velocity（速度/角速度）、Connector displacement（连接器位移）、Connector velocity（连接器速度）、Connector acceleration（连接器加速度），如图 2-47（a）所示。
+
+✧ Other：包括 Temperature（温度）、Electric potential（电势）、Pore pressure（孔隙压力）、Mass concentration（质量浓度）、Acoustic pressure（声压），如图 2-47（b）所示。
+
+下面对较常用的 Symmetry/Antisymmetry/Encastre 和 Displacement/Rotation 边界条件的定义做详细介绍，其他的请参阅系统帮助文件《ABAQUS/CAE User's Manual》。
+
+1．定义 Symmetry/Antisymmetry/Encastre（对称/反对称/端部固定边界条件）
+
+如图 2-47（a）所示，选择 Symmetry/Antisymmetry/Encastre 后，单击 Continue...按钮，选择施加该边界条件的点、线、面、cells，单击提示区的 Done 按钮，弹出 Edit Boundary Condition 对话框，如图 2-48 所示。该对话框包括以下 8 种单选的边界条件。
+
+![image](https://user-images.githubusercontent.com/43568675/193416511-aae4c7aa-382a-4bb8-825a-5341d75922e6.png)
+
+
+✧ XSYMM：关于与X轴（坐标轴 1）垂直的平面对称（Ul=UR2=UR3=0）。
+
+✧ YSYMM：关于与Y轴（坐标轴 2）垂直的平面对称（U2=URl=UR3=0）。
+
+✧ ZSYMM：关于与Z轴（坐标轴 3）垂直的平面对称（U3=URl=UR2=0）。
+
+✧ PINNED：约束 3 个平移自由度，即铰支约束（Ul=U2=U3=0）。
+
+✧ ENCASTRE：约束 6 个自由度，即固支约束（Ul=U2=U3=URI=UR2=UR3=0）。
+
+✧ XASYMM：关于与X轴（坐标轴 1）垂直的平面反对称（U2=U3 = URI=0），仅适用于 ABAQUS/Standard。
+
+✧ YASYMM：关于与Y轴（坐标轴 2）垂直的平面反对称（Ul=U3=UR2=0），仅适用于 ABAQUS/Standard。
+
+✧ ZASYMM：关于与Z轴（坐标轴 3）垂直的平面反对称（Ul=U2=UR3=0），仅适用于 ABAQUS/Standard。
+
+注意
+
+对于结构、载荷和边界条件对称的情况（包括正对称或反对称），可以建立对称面一侧的模型用来计算，并对该对称面施加正对称或反对称边界条件。如对称面与坐标轴 l 垂直的正对称结构，选择 XSYMM。
+
+2．定义 Displacement/Rotation（位移/旋转边界条件）
+
+如图 2-47（a）所示，选择 Displacement/Rotation 后，单击 Continue…按钮，选择施加该边界条件的点、线、面，单击提示区的 Done 按钮，弹出 Edit Boundary Condition 对话框，如图 2-49 所示。该对话框包括如下选项。
+
+![image](https://user-images.githubusercontent.com/43568675/193416527-c83b2fec-1a61-4aad-b2bd-9efc9b1caff3.png)
+
+
+（1）CSYS，用于选择坐标系，默认为整体坐标系。单击 Edit…按钮，可以选择局部坐标系。
+
+（2）Method，用于选择施加边界条件的方式。对于施加边界条件的分析步，只有当两种方式都有效时，该下拉列表才出现。
+
+✧ Specify Constraints：为指定的自由度设置位移或转角。
+
+✧ Fixed at Current Position：固定指定的自由度。若选择该选项，该对话框如图 2-49（b）所示。
+
+（3）Distribution，用于选择边界条件的分布方式。
+
+提示
+
+当选择 Fixed at Current Position 方式或在 ABAQUS/Explicit 分析步中定义边界条件时，该选项不被激活。
+
+✧ Uniform：该选项用于定义均匀分布的边界条件。
+
+✧ User-defined：使用用户子程序 DISP 定义边界条件。
+
+（4）Ul、U2、U3 用于指定三个方向的位移边界条件，UR1、UR2、UR3 用于指定三个方向的旋转边界条件（指定转角值为弧度）。
+
+以上所有选项用于设置位移约束，可选择一个或多个自由度，选择之后默认为 0。如图 2-49（a）所示，表示坐标轴 1 方向的位移为 0，坐标轴 2 方向的指定位移为 l，其他方向不约束。
+
+（5）Amplitude（幅值），用于选择边界条件随时间/频率变化的规律，与施加集中力时的设置方法相同，不再赘述。该列表仅在 Method 中选择 Specify Constraints 并在 Distribution 中选择 Uniform 时被激活，如图 2-49（a）所示。
+
+完成边界条件的设置后，单击工具区的 Boundary Condition Manager（边界条件管理器）工具，可见边界条件管理器内列出了已创建的边界条件。该管理器的用法与 Load Manager（载荷管理器）相同，不再赘述。
+
+2.5.3 设置预定义场
+主菜单中的 Predefined Field 菜单及工具区的 Create Predefined Field（创建预定义场）工具和 Predefined Field Manager（预定义场管理器）工具，用于预定义场的创建和管理。
+
+执行 Predefined Field→Create 命令，或定义预定义场时，单击工具区中的工具，也可双击左侧模型树中的 Predefined Field，弹出 Create Predefined Field 对话框，如图 2-50 所示。该对话框与 Create Load 对话框类似，包括以下几项。
+
+
+图 2-50 创建预定义场
+
+（1）Name（名称），在该栏内输入预定义场的名称，默认为 Predefined Field-n（n 表示第 n 个创建的预定义场）。
+
+（2）Step（分析步），在该下拉列表内选择用于创建预定义场的步骤，包括初始步和分析步。
+
+（3）Category（种类），该选项用于选择适用于所选步骤的预定义场的种类，包括 Mechanical（力学的）和 Other（其他）。
+
+（4）Types for Selected Step，该列表用于选择预定义场的类型，是 Category 的下一级选项。
+
+① Mechanical，在初始步中设置 Velocity（速度），如图 2-50（a）所示。单击 Continue...按钮，选择施加该边界条件的点、线、面、cells，单击提示区的 Done 按钮，弹出 Edit Predefined Field 对话框，如图 2-51 所示。该对话框包括以下几项。
+
+
+图 2-51 编辑初始位移场
+
+●Definition，用于选择初始速度的定义方式。
+
+✧ Translational only：用于定义初始平移速度。
+
+✧ Rotational only：用于定义初始旋转速度。
+
+✧ Translational&rotational：用于定义初始平移速度和初始旋转速度。
+
+● V1，该栏用于输入坐标轴 1 方向（整体坐标系X轴）的平移速度。当在 Definition 中选择 Rotational only 时，该选项不被激活。
+
+● V2，该栏用于输入坐标轴 2 方向（整体坐标系Y轴）的平移速度。当在 Definition 中选择 Rotational only 时，该选项不被激活。
+
+● V3，该栏用于输入坐标轴 3 方向（整体坐标系Z轴）的平移速度。当在 Definition 中选择 Rotational only 时，该选项不被激活。
+
+● Axis point l/Axis point 2，该栏用于输入旋转轴第 1/2 点的坐标。当在 Definition 中选择 Translational only 时，该选项不被激活。对于二维模型，在 Axis point 栏内输入指定点的坐标，为该点绕Z轴正方向的旋转；对于轴对称模型，在 Axis radius 栏内输入半径，为绕 Z 轴正方向以该指定半径旋转。
+
+●Angular velocity，该栏用于输入角速度。当在 Definition 中选择 Translational only 时，该选项不被激活。
+
+② Other，包括 Temperature（温度）和 Initial State（初始状态），如图 2-50（b）所示，其中 Initial State（初始状态）仅适用于初始步，输入以前的分析得到的已发生变形的网格和相关的材料状态作为初始状态场。
+
+提示
+
+若想了解 Temperature 和 Initial State 的设置，请参阅系统帮助文件《ABAQUS/CAE User's Manual》。
+
+完成预定义场的设置后，单击工具区的 Predefined Field Manager（预定义场管理器）工具，可见预定义场管理器内列出了已创建的预定义场。该管理器的用法与载荷管理器、边界条件管理器类似。
+
+2.5.4 定义工况
+主菜单中的 Load Case 菜单及工具区中第四行的 Create Load Case（创建工况）工具和 Load Case Manager（工况管理器）工具，用于工况的创建和管理。
+
+工况是一系列组合在一起的载荷和边界条件（可以指定非零的比例系数对载荷和边界条件进行缩放），线性叠加结构对它们的响应，仅适用于直接求解的稳态动力学线性摄动分析步（Steady-state dynamic, Direct）和静态线性摄动分析步（Static, Linear perturbation），包含工况的分析步仅支持场变量输出。
+
+定义工况时，执行 Load Case→Create 命令，或单击工具区中的工具，弹出 Create Load Case 对话框，如图 2-52 所示。该对话框包括以下几项。
+
+
+图 2-52 定义工况
+
+✧ Name（名称）：在该栏内输入工况名称，默认为 LoadCase-n（n 为第n个创建的工况）。
+
+✧ Step（分析步）：在该列表内选择用于创建工况的分析步。
+
+单击 Continue…按钮，弹出 Edit Load Case 对话框，如图 2-53 所示。该对话框包括以下几项。
+
+
+图 2-53 编辑工况
+
+（1）Loads（载荷）：用于选择该工况下的载荷。可以在表格内输入载荷名称和非零的比例系数（可以为负数），勾选 Highlight selections in viewport 对选择的载荷进行高亮度显示；也可以单击 Add…按钮，在 Load Selection 对话框中进行载荷的选择。单击 Delete Rows 按钮删除已添加的载荷。
+
+（2）Boundary Conditions（边界条件）：用于选择该工况下的边界条件。边界条件的设置与载荷的设置相同。默认选择的 In addition to selections bellow，use all boundary conditions propagated or modified from the base state 表示除了表中选择的边界条件外，该工况还包含所有传播到该分析步的边界条件（在该分析步下显示 propagated 或 modified）。
+
+完成工况的设置后，单击工具区 Load Case Manager（工况管理器）工具，可见工况管理器内列出了该分析步内已创建的工况。
+
+
