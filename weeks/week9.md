@@ -548,7 +548,7 @@ Other→Solver Controls 菜单用于线性方程组迭代求解器的控制，�
     Reynolds Stress
         物理上是最可靠的RANS 模型，克服了涡粘模型 的各向同性假设。需要更多的CPU时间和内存， 由于方程间强耦合性，收敛稍差。适合复杂三维 流动，强旋流等，如旋流燃烧器，旋风分离器等
 
-## Day 58 载荷模块（Load）
+## Day 58 载荷模块（Load）1
 
 进入 Load 功能模块后，主菜单中的 Load 菜单及工具区中的 Create Load（创建载荷）工具和 Load Manager（载荷管理器）工具用于载荷的创建和管理。
 
@@ -675,6 +675,7 @@ Other→Solver Controls 菜单用于线性方程组迭代求解器的控制，�
 ![image](https://user-images.githubusercontent.com/43568675/193416352-34a0a5ac-f9d7-4828-ac24-dd5ef2ef1b4e.png)
 
 
+## Day 58 载荷模块（Load）2
 
 - [x]  定义边界条件
 
@@ -757,6 +758,10 @@ Other→Solver Controls 菜单用于线性方程组迭代求解器的控制，�
 （5）Amplitude（幅值），用于选择边界条件随时间/频率变化的规律，与施加集中力时的设置方法相同，不再赘述。该列表仅在 Method 中选择 Specify Constraints 并在 Distribution 中选择 Uniform 时被激活，如图 2-49（a）所示。
 
 完成边界条件的设置后，单击工具区的 Boundary Condition Manager（边界条件管理器）工具，可见边界条件管理器内列出了已创建的边界条件。该管理器的用法与 Load Manager（载荷管理器）相同，不再赘述。
+
+
+
+## Day 60 载荷模块（Load）3
 
 2.5.3 设置预定义场
 主菜单中的 Predefined Field 菜单及工具区的 Create Predefined Field（创建预定义场）工具和 Predefined Field Manager（预定义场管理器）工具，用于预定义场的创建和管理。
