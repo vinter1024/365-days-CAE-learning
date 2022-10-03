@@ -87,4 +87,4 @@ To learn CAE product in 365 days
 | Day 57     | [fluent湍流模型分类](./weeks/week9.md)                                              | 
 | Day 58     | [载荷模块（Load）1](./weeks/week9.md)                                               | 
 | Day 59     | [载荷模块（Load）2](./weeks/week9.md)                                               | 
-| Day 60     | [](./weeks/week9.md)                                               | 
+| Day 60     | [载荷模块（Load）3](./weeks/week9.md)                                               | 
