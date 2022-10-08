@@ -82,9 +82,10 @@ To learn CAE product in 365 days
 | Day 52     | [Abaqus 特性模块（Property）2](./weeks/week8.md)                                    | 
 | Day 53     | [Abaqus 装配模块（Assembly）1](./weeks/week9.md)                                    | 
 | Day 54     | [Abaqus 装配模块（Assembly）2](./weeks/week9.md)                                    | 
-| Day 55     | [Abaqus 分析步模块（STEP） 1](./weeks/week9.md)                                       | 
-| Day 56     | [Abaqus 分析步模块（STEP） 2](./weeks/week9.md)                                       | 
+| Day 55     | [Abaqus 分析步模块（STEP） 1](./weeks/week9.md)                                     | 
+| Day 56     | [Abaqus 分析步模块（STEP） 2](./weeks/week9.md)                                     | 
 | Day 57     | [fluent湍流模型分类](./weeks/week9.md)                                              | 
 | Day 58     | [载荷模块（Load）1](./weeks/week9.md)                                               | 
 | Day 59     | [载荷模块（Load）2](./weeks/week9.md)                                               | 
 | Day 60     | [载荷模块（Load）3](./weeks/week9.md)                                               | 
+| Day 61     | [Abaqus小结](./weeks/week9.md)                                                     | 
