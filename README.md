@@ -89,4 +89,5 @@ To learn CAE product in 365 days
 | Day 59     | [载荷模块（Load）2](./weeks/week9.md)                                               | 
 | Day 60     | [载荷模块（Load）3](./weeks/week9.md)                                               | 
 | Day 61     | [Abaqus小结](./weeks/week10.md)                                                     | 
-| Day 62     | [接触属性的定义](./weeks/week10.md)                                                     | 
+| Day 62     | [接触属性的定义](./weeks/week10.md)                                                   | 
+| Day 63     | [网格质量检测](./weeks/week10.md)                                                    | 
